@@ -261,10 +261,17 @@ export default function App() {
   const marketsOrder = ['Market View', 'Industry']
 
   const sections: Section[] = useMemo(() => {
+    const interviewNameMap: Record<string, string> = {
+      Openers: 'Interview Openers',
+      'Firm Briefs': 'Firm Briefs',
+    }
     const startFiles = [
       ...parseFiles(studyPathMd).map((f) => ({ ...f, name: 'Study Path' })),
       ...parseFiles(rolesMd).map((f) => ({ ...f, name: 'Roles: RM vs IC' })),
-      ...parseFiles(interviewMds).map((f) => ({ ...f, name: 'Interview Openers' })),
+      ...parseFiles(interviewMds).map((f) => ({
+        ...f,
+        name: interviewNameMap[f.name] || f.name,
+      })),
     ]
 
     const bqFiles = [
