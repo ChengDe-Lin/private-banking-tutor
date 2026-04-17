@@ -2,6 +2,8 @@
 
 How to use this path — work through one day per sitting. When a concept trips you up, invoke `/project:confusion`. On Day 7, revisit your weakest topic.
 
+> **Before you start:** read [`roles.md`](roles.md) to decide whether you're optimising for a Relationship Manager (RM) or Investment Counselor (IC) interview. That page contains role-emphasised re-orderings of the 7 days below — the ~70% of content is shared but the emphasis and practice priorities diverge.
+
 | Day | Focus | Artifacts created / read |
 |---|---|---|
 | **D1** | Derivatives fundamentals — options intuition, payoff diagrams, vol, futures/forwards, swaps | [products/derivatives.md](products/derivatives.md) |

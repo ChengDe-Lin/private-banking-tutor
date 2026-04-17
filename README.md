@@ -4,7 +4,7 @@ A personal knowledge base for Singapore private-banking interviews (RM-lateral /
 
 ## Quick Start
 
-Start with **`study_path.md`** — the 7-day on-ramp.
+Start with **[`roles.md`](roles.md)** to decide which role (RM vs Investment Counselor) you're optimising for — the two interviews emphasise different things. Then **[`study_path.md`](study_path.md)** for the 7-day on-ramp.
 
 ```bash
 # Browse content as a website
@@ -16,7 +16,8 @@ cd web && npm install && npm run dev
 
 ```
 private-banking-tutor/
-├── study_path.md          # 7-day study schedule — start here
+├── roles.md               # RM vs IC role distinction — read first to calibrate study emphasis
+├── study_path.md          # 7-day study schedule — default ordering
 ├── products/              # Product deep-dives (derivatives, structured, FI, FX, ...)
 ├── concepts/              # Wealth-management concepts (SAA/TAA, CIO view)
 ├── regulation/            # MAS 626, PB Code, AI/EI, FATCA/CRS, SOW/SOF
