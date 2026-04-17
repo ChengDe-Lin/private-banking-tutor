@@ -2,29 +2,9 @@ import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
-import mermaid from 'mermaid'
 import type { Components } from 'react-markdown'
 
-mermaid.initialize({
-  startOnLoad: false,
-  theme: 'dark',
-  fontFamily: 'Plus Jakarta Sans, sans-serif',
-})
-
-function MermaidDiagram({ chart }: { chart: string }) {
-  const [svg, setSvg] = useState('')
-
-  useEffect(() => {
-    const id = `m-${Date.now()}-${Math.random().toString(36).slice(2)}`
-    mermaid
-      .render(id, chart)
-      .then(({ svg: renderedSvg }) => setSvg(renderedSvg))
-      .catch(() => setSvg(''))
-  }, [chart])
-
-  if (!svg) return <pre><code>{chart}</code></pre>
-  return <div className="mermaid-diagram" dangerouslySetInnerHTML={{ __html: svg }} />
-}
+// ─── Types ───
 
 interface FileEntry {
   path: string
@@ -46,6 +26,10 @@ interface Heading {
   id: string
 }
 
+type Theme = 'light' | 'dark'
+
+// ─── Markdown Imports ───
+
 const studyPathMd = import.meta.glob('../../study_path.md', {
   query: '?raw',
   import: 'default',
@@ -53,6 +37,12 @@ const studyPathMd = import.meta.glob('../../study_path.md', {
 }) as Record<string, string>
 
 const rolesMd = import.meta.glob('../../roles.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>
+
+const interviewMds = import.meta.glob('../../interview/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -111,6 +101,15 @@ const assessmentsMds = import.meta.glob('../../assessments/*.md', {
   eager: true,
 }) as Record<string, string>
 
+// ─── Helpers ───
+
+const ACRONYMS: Record<string, string> = {
+  fx: 'FX', cio: 'CIO', mas: 'MAS', pb: 'PB',
+  fatca: 'FATCA', crs: 'CRS', aml: 'AML',
+  sow: 'SOW', sof: 'SOF', hnw: 'HNW',
+  bq: 'BQ', rm: 'RM', ic: 'IC', ppli: 'PPLI',
+}
+
 function toDisplayName(path: string): string {
   const fileName = path.split('/').pop()?.replace('.md', '') || ''
   const stripped = fileName.replace(/^\d+[_-]/, '')
@@ -118,22 +117,7 @@ function toDisplayName(path: string): string {
     .split(/[_-]/)
     .map((w) => {
       const lower = w.toLowerCase()
-      const acronyms: Record<string, string> = {
-        fx: 'FX',
-        cio: 'CIO',
-        mas: 'MAS',
-        pb: 'PB',
-        fatca: 'FATCA',
-        crs: 'CRS',
-        aml: 'AML',
-        sow: 'SOW',
-        sof: 'SOF',
-        hnw: 'HNW',
-        bq: 'BQ',
-        rm: 'RM',
-        ic: 'IC',
-      }
-      if (acronyms[lower]) return acronyms[lower]
+      if (ACRONYMS[lower]) return ACRONYMS[lower]
       return w.charAt(0).toUpperCase() + w.slice(1)
     })
     .join(' ')
@@ -193,6 +177,48 @@ function getTextContent(node: React.ReactNode): string {
   return ''
 }
 
+// ─── Progress tracking ───
+
+const VISITED_KEY = 'pb-visited'
+
+function loadVisited(): Set<string> {
+  try {
+    const raw = localStorage.getItem(VISITED_KEY)
+    if (!raw) return new Set()
+    const arr = JSON.parse(raw) as string[]
+    return new Set(arr)
+  } catch {
+    return new Set()
+  }
+}
+
+function saveVisited(set: Set<string>) {
+  try {
+    localStorage.setItem(VISITED_KEY, JSON.stringify(Array.from(set)))
+  } catch {}
+}
+
+// ─── Theme ───
+
+const THEME_KEY = 'pb-theme'
+
+function loadTheme(): Theme {
+  try {
+    const saved = localStorage.getItem(THEME_KEY)
+    if (saved === 'dark' || saved === 'light') return saved
+  } catch {}
+  return 'light'
+}
+
+function applyTheme(theme: Theme) {
+  document.documentElement.setAttribute('data-theme', theme)
+  try {
+    localStorage.setItem(THEME_KEY, theme)
+  } catch {}
+}
+
+// ─── Table of Contents ───
+
 function TableOfContents({
   headings,
   activeId,
@@ -230,6 +256,8 @@ function TableOfContents({
   )
 }
 
+// ─── App ───
+
 export default function App() {
   const [selected, setSelected] = useState<FileEntry | null>(null)
   const [activeHeadingId, setActiveHeadingId] = useState('')
@@ -237,6 +265,17 @@ export default function App() {
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
+  const [theme, setTheme] = useState<Theme>(() => loadTheme())
+  const [visited, setVisited] = useState<Set<string>>(() => loadVisited())
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  useEffect(() => {
+    applyTheme(theme)
+  }, [theme])
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }, [])
 
   const productOrder = [
     'Derivatives',
@@ -246,6 +285,7 @@ export default function App() {
     'Equities Funds',
     'Leverage',
     'Alternatives',
+    'Insurance PPLI',
   ]
 
   const regulationOrder = [
@@ -256,7 +296,14 @@ export default function App() {
     'SOW SOF Sanctions',
   ]
 
-  const conceptOrder = ['Wealth Management', 'CIO House View']
+  const conceptOrder = [
+    'Wealth Management',
+    'CIO House View',
+    'Client Lifecycle',
+    'Estate Planning',
+    'Behavioral Finance',
+    'Tax Basics',
+  ]
 
   const marketsOrder = ['Market View', 'Industry']
 
@@ -264,6 +311,7 @@ export default function App() {
     const startFiles = [
       ...parseFiles(studyPathMd).map((f) => ({ ...f, name: 'Study Path' })),
       ...parseFiles(rolesMd).map((f) => ({ ...f, name: 'Roles: RM vs IC' })),
+      ...parseFiles(interviewMds).map((f) => ({ ...f, name: 'Interview Openers' })),
     ]
 
     const bqFiles = [
@@ -275,7 +323,7 @@ export default function App() {
       {
         key: 'start',
         title: 'Start Here',
-        description: 'Study path and role calibration',
+        description: 'Study path, role calibration, and interview openers',
         color: 'var(--accent)',
         files: startFiles,
       },
@@ -289,7 +337,7 @@ export default function App() {
       {
         key: 'concepts',
         title: 'Concepts',
-        description: 'Wealth management fundamentals',
+        description: 'Wealth-management fundamentals and frameworks',
         color: 'var(--accent-green)',
         files: parseFiles(conceptsMds, conceptOrder),
       },
@@ -317,14 +365,14 @@ export default function App() {
       {
         key: 'bq',
         title: 'Behavioural (BQ)',
-        description: 'STAR stories',
+        description: 'STAR story bank',
         color: 'var(--accent-green)',
         files: bqFiles,
       },
       {
         key: 'business_plan',
         title: 'Business Plan',
-        description: 'RM business plan template',
+        description: 'RM business-plan template',
         color: 'var(--accent-orange)',
         files: parseFiles(businessPlanMds),
       },
@@ -336,9 +384,15 @@ export default function App() {
         files: parseFiles(assessmentsMds),
       },
     ]
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const allFiles = useMemo(() => sections.flatMap((s) => s.files), [sections])
+  const totalPages = allFiles.length
+  const visitedCount = useMemo(
+    () => allFiles.filter((f) => visited.has(f.path)).length,
+    [allFiles, visited],
+  )
 
   const headings = useMemo(
     () => (selected ? extractHeadings(selected.content) : []),
@@ -425,14 +479,17 @@ export default function App() {
         e.preventDefault()
         searchInputRef.current?.focus()
       }
-      if (e.key === 'Escape' && searchQuery) {
-        setSearchQuery('')
-        searchInputRef.current?.blur()
+      if (e.key === 'Escape') {
+        if (searchQuery) {
+          setSearchQuery('')
+          searchInputRef.current?.blur()
+        }
+        if (sidebarOpen) setSidebarOpen(false)
       }
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [searchQuery])
+  }, [searchQuery, sidebarOpen])
 
   const mdComponents: Components = useMemo(
     () => ({
@@ -456,37 +513,86 @@ export default function App() {
           <table {...props}>{children}</table>
         </div>
       ),
-      pre: ({ children, ...props }: any) => {
-        const child = Array.isArray(children) ? children[0] : children
-        if (child?.props?.className === 'language-mermaid') {
-          return (
-            <MermaidDiagram
-              chart={String(child.props.children).replace(/\n$/, '')}
-            />
-          )
-        }
-        return <pre {...props}>{children}</pre>
-      },
     }),
     [],
   )
 
   const handleSelect = useCallback((file: FileEntry) => {
     setSelected(file)
+    setSidebarOpen(false)
+    setVisited((prev) => {
+      if (prev.has(file.path)) return prev
+      const next = new Set(prev)
+      next.add(file.path)
+      saveVisited(next)
+      return next
+    })
   }, [])
+
+  const goHome = useCallback(() => {
+    setSelected(null)
+    setSidebarOpen(false)
+  }, [])
+
+  // Hero start-here target: Study Path, or first file
+  const heroTarget = allFiles.find((f) => f.name === 'Study Path') || allFiles[0]
 
   return (
     <div className="app-layout">
-      <aside className="sidebar">
+      <div className="mobile-topbar">
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setSidebarOpen(true)}
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+        <div className="mobile-topbar-title">
+          Private Banking <span className="mobile-topbar-title-accent">Tutor</span>
+        </div>
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+          title="Toggle light / dark"
+        >
+          {theme === 'light' ? '☾' : '☀'}
+        </button>
+      </div>
+
+      <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
-          <button
-            onClick={() => setSelected(null)}
-            className="sidebar-title-btn"
-          >
+          <div className="sidebar-controls">
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              title="Toggle light / dark"
+            >
+              {theme === 'light' ? '☾' : '☀'}
+            </button>
+            <button
+              className="sidebar-close"
+              onClick={() => setSidebarOpen(false)}
+              aria-label="Close menu"
+            >
+              ✕
+            </button>
+          </div>
+          <button onClick={goHome} className="sidebar-title-btn">
             <span className="sidebar-title">Private Banking</span>
             <span className="sidebar-subtitle">Tutor</span>
           </button>
-          <span className="sidebar-count">{allFiles.length} notes</span>
+          <span className="sidebar-count">{totalPages} notes</span>
+          <span className="sidebar-progress">
+            Progress: {visitedCount} / {totalPages}
+          </span>
+          <span className="sidebar-progress-bar">
+            <span
+              className="sidebar-progress-fill"
+              style={{ width: `${totalPages === 0 ? 0 : (visitedCount / totalPages) * 100}%` }}
+            />
+          </span>
         </div>
 
         <div className="sidebar-search">
@@ -532,7 +638,7 @@ export default function App() {
                           selected?.path === r.file.path
                             ? 'sidebar-item-active'
                             : ''
-                        }`}
+                        } ${visited.has(r.file.path) ? 'visited' : ''}`}
                       >
                         <span className="search-result-name">
                           {r.file.name}
@@ -560,7 +666,7 @@ export default function App() {
                 <div className="sidebar-section-header">
                   <span
                     className="sidebar-dot"
-                    style={{ background: s.color, color: s.color }}
+                    style={{ color: s.color }}
                   />
                   <span className="sidebar-section-title">{s.title}</span>
                 </div>
@@ -576,7 +682,7 @@ export default function App() {
                             selected?.path === f.path
                               ? 'sidebar-item-active'
                               : ''
-                          }`}
+                          } ${visited.has(f.path) ? 'visited' : ''}`}
                         >
                           {f.name}
                         </button>
@@ -590,71 +696,19 @@ export default function App() {
         </nav>
       </aside>
 
-      <main className="main-content" ref={mainRef}>
-        <div className="mobile-search">
-          <div className="mobile-search-bar">
-            <input
-              type="text"
-              className="mobile-search-input"
-              placeholder="Search all notes…"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            {searchQuery && (
-              <button
-                className="mobile-search-clear"
-                onClick={() => setSearchQuery('')}
-              >
-                ×
-              </button>
-            )}
-          </div>
-          {searchResults && (
-            <div className="mobile-search-results">
-              {searchResults.length === 0 ? (
-                <p className="mobile-search-empty">No matches found</p>
-              ) : (
-                <ul>
-                  {searchResults.map((r) => (
-                    <li key={r.file.path}>
-                      <button
-                        onClick={() => {
-                          handleSelect(r.file)
-                          setSearchQuery('')
-                        }}
-                        className="mobile-search-result-item"
-                      >
-                        <span className="search-result-name">
-                          {r.file.name}
-                        </span>
-                        <span
-                          className="search-result-section"
-                          style={{ color: r.section.color }}
-                        >
-                          {r.section.title}
-                        </span>
-                        {r.snippet && (
-                          <span className="search-result-snippet">
-                            {r.snippet}
-                          </span>
-                        )}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          )}
-        </div>
+      {sidebarOpen && (
+        <div
+          className="sidebar-backdrop"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
+      <main className="main-content" ref={mainRef}>
         {selected ? (
           <div className="article-layout">
             <div className="article-container">
               <div className="breadcrumb">
-                <button
-                  onClick={() => setSelected(null)}
-                  className="breadcrumb-home"
-                >
+                <button onClick={goHome} className="breadcrumb-home">
                   Home
                 </button>
                 <span className="breadcrumb-sep">/</span>
@@ -707,9 +761,27 @@ export default function App() {
                 <span className="home-title-accent">Tutor</span>
               </h1>
               <p className="home-desc">
-                A personal knowledge base for Singapore private-banking interviews — RM lateral and Investment Counselor. Start with the study path, then explore by topic.
+                A personal knowledge base for Singapore private-banking interviews — Relationship Manager lateral and Investment Counselor. Every claim grounded in a mechanism, every recommendation linked to a client profile.
               </p>
             </div>
+
+            {heroTarget && (
+              <div className="home-cta">
+                <div className="home-cta-text">
+                  <div className="home-cta-title">New here? Start with the 7-day path.</div>
+                  <div className="home-cta-desc">
+                    The study path tells you what to read each day. Before that, read <em>Roles: RM vs IC</em> to calibrate your emphasis.
+                  </div>
+                </div>
+                <button
+                  className="home-cta-button"
+                  onClick={() => handleSelect(heroTarget)}
+                >
+                  Open Study Path →
+                </button>
+              </div>
+            )}
+
             <div className="home-grid">
               {sections.map((s) => (
                 <div key={s.key} className="home-card">
@@ -728,7 +800,7 @@ export default function App() {
                         <li key={f.path}>
                           <button
                             onClick={() => handleSelect(f)}
-                            className="home-card-link"
+                            className={`home-card-link ${visited.has(f.path) ? 'visited' : ''}`}
                           >
                             {f.name}
                           </button>
