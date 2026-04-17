@@ -2,6 +2,8 @@
 
 A personal knowledge base for Singapore private-banking interviews (RM-lateral / Investment Counselor). AI-assisted curation with a 7-day study path, product deep-dives, suitability case studies, a behavioral story bank, and a business-plan template.
 
+**Live site:** <https://chengde-lin.github.io/private-banking-tutor/>
+
 ## Quick Start
 
 Start with **[`roles.md`](roles.md)** to decide which role (RM vs Investment Counselor) you're optimising for — the two interviews emphasise different things. Then **[`study_path.md`](study_path.md)** for the 7-day on-ramp.
