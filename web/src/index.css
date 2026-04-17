@@ -344,7 +344,7 @@ ul, ol { list-style: none; padding: 0; }
 }
 
 /* Progress indicator: visited page checkmark */
-.sidebar-item.visited::after {
+.sidebar-item.completed::after {
   content: '✓';
   position: absolute;
   right: 10px;
@@ -581,7 +581,7 @@ ul, ol { list-style: none; padding: 0; }
   padding-left: 4px;
 }
 
-.home-card-link.visited::before {
+.home-card-link.completed::before {
   content: '✓';
   color: var(--accent-green);
   opacity: 0.65;
@@ -1172,4 +1172,107 @@ ul, ol { list-style: none; padding: 0; }
   .main-content { overflow: visible; }
   .article-container { max-width: 100%; padding: 0; }
   body { background: white !important; color: black !important; }
+}
+
+/* ═══════════════════
+   Manual "Mark as read" controls
+   ═══════════════════ */
+
+/* Small toggle next to breadcrumb */
+.mark-read-btn {
+  margin-left: auto;
+  padding: 5px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.mark-read-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.mark-read-btn.is-completed {
+  color: var(--accent-green);
+  border-color: var(--accent-green);
+  background: var(--accent-green-dim);
+  font-weight: 600;
+}
+
+.mark-read-btn.is-completed:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* Bigger CTA at the end of the article */
+.article-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: center;
+}
+
+.mark-read-btn-large {
+  margin: 0;
+  padding: 12px 28px;
+  font-size: 0.9375rem;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+}
+
+.mark-read-btn-large:not(.is-completed) {
+  background: var(--accent);
+  color: var(--bg-surface);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .mark-read-btn-large:not(.is-completed) {
+  color: var(--bg-deep);
+}
+
+.mark-read-btn-large:not(.is-completed):hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Reset link next to progress count */
+.sidebar-progress-reset {
+  margin-left: 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.sidebar-progress-reset:hover {
+  color: var(--accent);
+}
+
+/* Mobile: stack breadcrumb + button */
+@media (max-width: 768px) {
+  .breadcrumb {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .mark-read-btn {
+    margin-left: 0;
+  }
 }

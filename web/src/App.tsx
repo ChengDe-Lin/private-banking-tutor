@@ -4,8 +4,6 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import type { Components } from 'react-markdown'
 
-// ─── Types ───
-
 interface FileEntry {
   path: string
   name: string
@@ -28,42 +26,28 @@ interface Heading {
 
 type Theme = 'light' | 'dark'
 
-// ─── Markdown Imports ───
-
 const studyPathMd = import.meta.glob('../../study_path.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const rolesMd = import.meta.glob('../../roles.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const interviewMds = import.meta.glob('../../interview/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const productsMds = import.meta.glob('../../products/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const conceptsMds = import.meta.glob('../../concepts/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const regulationMds = import.meta.glob('../../regulation/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const marketsMds = import.meta.glob(
@@ -72,36 +56,24 @@ const marketsMds = import.meta.glob(
 ) as Record<string, string>
 
 const casesMds = import.meta.glob('../../cases/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const bqReadmeMd = import.meta.glob('../../bq/README.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const bqStoriesMds = import.meta.glob('../../bq/stories/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const businessPlanMds = import.meta.glob('../../business_plan/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
 
 const assessmentsMds = import.meta.glob('../../assessments/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
+  query: '?raw', import: 'default', eager: true,
 }) as Record<string, string>
-
-// ─── Helpers ───
 
 const ACRONYMS: Record<string, string> = {
   fx: 'FX', cio: 'CIO', mas: 'MAS', pb: 'PB',
@@ -177,13 +149,13 @@ function getTextContent(node: React.ReactNode): string {
   return ''
 }
 
-// ─── Progress tracking ───
+// ─── Completed-pages tracking (manual) ───
 
-const VISITED_KEY = 'pb-visited'
+const COMPLETED_KEY = 'pb-completed'
 
-function loadVisited(): Set<string> {
+function loadCompleted(): Set<string> {
   try {
-    const raw = localStorage.getItem(VISITED_KEY)
+    const raw = localStorage.getItem(COMPLETED_KEY)
     if (!raw) return new Set()
     const arr = JSON.parse(raw) as string[]
     return new Set(arr)
@@ -192,9 +164,9 @@ function loadVisited(): Set<string> {
   }
 }
 
-function saveVisited(set: Set<string>) {
+function saveCompleted(set: Set<string>) {
   try {
-    localStorage.setItem(VISITED_KEY, JSON.stringify(Array.from(set)))
+    localStorage.setItem(COMPLETED_KEY, JSON.stringify(Array.from(set)))
   } catch {}
 }
 
@@ -216,8 +188,6 @@ function applyTheme(theme: Theme) {
     localStorage.setItem(THEME_KEY, theme)
   } catch {}
 }
-
-// ─── Table of Contents ───
 
 function TableOfContents({
   headings,
@@ -256,8 +226,6 @@ function TableOfContents({
   )
 }
 
-// ─── App ───
-
 export default function App() {
   const [selected, setSelected] = useState<FileEntry | null>(null)
   const [activeHeadingId, setActiveHeadingId] = useState('')
@@ -266,43 +234,28 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [theme, setTheme] = useState<Theme>(() => loadTheme())
-  const [visited, setVisited] = useState<Set<string>>(() => loadVisited())
+  const [completed, setCompleted] = useState<Set<string>>(() => loadCompleted())
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  useEffect(() => {
-    applyTheme(theme)
-  }, [theme])
+  useEffect(() => { applyTheme(theme) }, [theme])
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
   }, [])
 
   const productOrder = [
-    'Derivatives',
-    'Structured',
-    'Fixed Income',
-    'FX',
-    'Equities Funds',
-    'Leverage',
-    'Alternatives',
-    'Insurance PPLI',
+    'Derivatives', 'Structured', 'Fixed Income', 'FX',
+    'Equities Funds', 'Leverage', 'Alternatives', 'Insurance PPLI',
   ]
 
   const regulationOrder = [
-    'MAS Notice 626',
-    'PB Code Of Conduct',
-    'Accredited Investor',
-    'FATCA CRS',
-    'SOW SOF Sanctions',
+    'MAS Notice 626', 'PB Code Of Conduct', 'Accredited Investor',
+    'FATCA CRS', 'SOW SOF Sanctions',
   ]
 
   const conceptOrder = [
-    'Wealth Management',
-    'CIO House View',
-    'Client Lifecycle',
-    'Estate Planning',
-    'Behavioral Finance',
-    'Tax Basics',
+    'Wealth Management', 'CIO House View', 'Client Lifecycle',
+    'Estate Planning', 'Behavioral Finance', 'Tax Basics',
   ]
 
   const marketsOrder = ['Market View', 'Industry']
@@ -321,64 +274,52 @@ export default function App() {
 
     return [
       {
-        key: 'start',
-        title: 'Start Here',
+        key: 'start', title: 'Start Here',
         description: 'Study path, role calibration, and interview openers',
-        color: 'var(--accent)',
-        files: startFiles,
+        color: 'var(--accent)', files: startFiles,
       },
       {
-        key: 'products',
-        title: 'Products',
+        key: 'products', title: 'Products',
         description: 'Product deep-dives',
         color: 'var(--accent-blue)',
         files: parseFiles(productsMds, productOrder),
       },
       {
-        key: 'concepts',
-        title: 'Concepts',
+        key: 'concepts', title: 'Concepts',
         description: 'Wealth-management fundamentals and frameworks',
         color: 'var(--accent-green)',
         files: parseFiles(conceptsMds, conceptOrder),
       },
       {
-        key: 'regulation',
-        title: 'Regulation',
+        key: 'regulation', title: 'Regulation',
         description: 'MAS / PB Code / AI / FATCA / AML',
         color: 'var(--accent-orange)',
         files: parseFiles(regulationMds, regulationOrder),
       },
       {
-        key: 'markets',
-        title: 'Markets',
+        key: 'markets', title: 'Markets',
         description: 'Industry landscape and market view',
         color: 'var(--accent-blue)',
         files: parseFiles(marketsMds, marketsOrder),
       },
       {
-        key: 'cases',
-        title: 'Cases',
+        key: 'cases', title: 'Cases',
         description: 'Suitability case studies',
-        color: 'var(--accent)',
-        files: parseFiles(casesMds),
+        color: 'var(--accent)', files: parseFiles(casesMds),
       },
       {
-        key: 'bq',
-        title: 'Behavioural (BQ)',
+        key: 'bq', title: 'Behavioural (BQ)',
         description: 'STAR story bank',
-        color: 'var(--accent-green)',
-        files: bqFiles,
+        color: 'var(--accent-green)', files: bqFiles,
       },
       {
-        key: 'business_plan',
-        title: 'Business Plan',
+        key: 'business_plan', title: 'Business Plan',
         description: 'RM business-plan template',
         color: 'var(--accent-orange)',
         files: parseFiles(businessPlanMds),
       },
       {
-        key: 'assessments',
-        title: 'Assessments',
+        key: 'assessments', title: 'Assessments',
         description: 'Confusion ledger',
         color: 'var(--accent)',
         files: parseFiles(assessmentsMds),
@@ -389,9 +330,9 @@ export default function App() {
 
   const allFiles = useMemo(() => sections.flatMap((s) => s.files), [sections])
   const totalPages = allFiles.length
-  const visitedCount = useMemo(
-    () => allFiles.filter((f) => visited.has(f.path)).length,
-    [allFiles, visited],
+  const completedCount = useMemo(
+    () => allFiles.filter((f) => completed.has(f.path)).length,
+    [allFiles, completed],
   )
 
   const headings = useMemo(
@@ -520,13 +461,6 @@ export default function App() {
   const handleSelect = useCallback((file: FileEntry) => {
     setSelected(file)
     setSidebarOpen(false)
-    setVisited((prev) => {
-      if (prev.has(file.path)) return prev
-      const next = new Set(prev)
-      next.add(file.path)
-      saveVisited(next)
-      return next
-    })
   }, [])
 
   const goHome = useCallback(() => {
@@ -534,8 +468,25 @@ export default function App() {
     setSidebarOpen(false)
   }, [])
 
-  // Hero start-here target: Study Path, or first file
+  const toggleCompleted = useCallback((path: string) => {
+    setCompleted((prev) => {
+      const next = new Set(prev)
+      if (next.has(path)) next.delete(path)
+      else next.add(path)
+      saveCompleted(next)
+      return next
+    })
+  }, [])
+
+  const resetProgress = useCallback(() => {
+    if (!confirm('Reset all read-progress? This only affects this device.')) return
+    setCompleted(new Set())
+    saveCompleted(new Set())
+  }, [])
+
   const heroTarget = allFiles.find((f) => f.name === 'Study Path') || allFiles[0]
+
+  const selectedIsCompleted = selected ? completed.has(selected.path) : false
 
   return (
     <div className="app-layout">
@@ -585,12 +536,21 @@ export default function App() {
           </button>
           <span className="sidebar-count">{totalPages} notes</span>
           <span className="sidebar-progress">
-            Progress: {visitedCount} / {totalPages}
+            Read: {completedCount} / {totalPages}
+            {completedCount > 0 && (
+              <button
+                className="sidebar-progress-reset"
+                onClick={resetProgress}
+                title="Reset read progress"
+              >
+                reset
+              </button>
+            )}
           </span>
           <span className="sidebar-progress-bar">
             <span
               className="sidebar-progress-fill"
-              style={{ width: `${totalPages === 0 ? 0 : (visitedCount / totalPages) * 100}%` }}
+              style={{ width: `${totalPages === 0 ? 0 : (completedCount / totalPages) * 100}%` }}
             />
           </span>
         </div>
@@ -638,11 +598,9 @@ export default function App() {
                           selected?.path === r.file.path
                             ? 'sidebar-item-active'
                             : ''
-                        } ${visited.has(r.file.path) ? 'visited' : ''}`}
+                        } ${completed.has(r.file.path) ? 'completed' : ''}`}
                       >
-                        <span className="search-result-name">
-                          {r.file.name}
-                        </span>
+                        <span className="search-result-name">{r.file.name}</span>
                         <span
                           className="search-result-section"
                           style={{ color: r.section.color }}
@@ -650,9 +608,7 @@ export default function App() {
                           {r.section.title}
                         </span>
                         {r.snippet && (
-                          <span className="search-result-snippet">
-                            {r.snippet}
-                          </span>
+                          <span className="search-result-snippet">{r.snippet}</span>
                         )}
                       </button>
                     </li>
@@ -664,10 +620,7 @@ export default function App() {
             sections.map((s) => (
               <div key={s.key} className="sidebar-section">
                 <div className="sidebar-section-header">
-                  <span
-                    className="sidebar-dot"
-                    style={{ color: s.color }}
-                  />
+                  <span className="sidebar-dot" style={{ color: s.color }} />
                   <span className="sidebar-section-title">{s.title}</span>
                 </div>
                 {s.files.length === 0 ? (
@@ -682,7 +635,7 @@ export default function App() {
                             selected?.path === f.path
                               ? 'sidebar-item-active'
                               : ''
-                          } ${visited.has(f.path) ? 'visited' : ''}`}
+                          } ${completed.has(f.path) ? 'completed' : ''}`}
                         >
                           {f.name}
                         </button>
@@ -697,10 +650,7 @@ export default function App() {
       </aside>
 
       {sidebarOpen && (
-        <div
-          className="sidebar-backdrop"
-          onClick={() => setSidebarOpen(false)}
-        />
+        <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
       )}
 
       <main className="main-content" ref={mainRef}>
@@ -713,6 +663,13 @@ export default function App() {
                 </button>
                 <span className="breadcrumb-sep">/</span>
                 <span className="breadcrumb-current">{selected.name}</span>
+                <button
+                  className={`mark-read-btn ${selectedIsCompleted ? 'is-completed' : ''}`}
+                  onClick={() => toggleCompleted(selected.path)}
+                  title={selectedIsCompleted ? 'Click to unmark' : 'Mark as read'}
+                >
+                  {selectedIsCompleted ? '✓ Read' : '☐ Mark as read'}
+                </button>
               </div>
 
               {h2Headings.length > 0 && (
@@ -750,6 +707,15 @@ export default function App() {
                   {selected.content}
                 </ReactMarkdown>
               </article>
+
+              <div className="article-footer">
+                <button
+                  className={`mark-read-btn mark-read-btn-large ${selectedIsCompleted ? 'is-completed' : ''}`}
+                  onClick={() => toggleCompleted(selected.path)}
+                >
+                  {selectedIsCompleted ? '✓ Read — click to unmark' : 'Mark as read'}
+                </button>
+              </div>
             </div>
             <TableOfContents headings={headings} activeId={activeHeadingId} />
           </div>
@@ -800,7 +766,7 @@ export default function App() {
                         <li key={f.path}>
                           <button
                             onClick={() => handleSelect(f)}
-                            className={`home-card-link ${visited.has(f.path) ? 'visited' : ''}`}
+                            className={`home-card-link ${completed.has(f.path) ? 'completed' : ''}`}
                           >
                             {f.name}
                           </button>
