@@ -267,7 +267,7 @@ export default function App() {
     }
     const startFiles = [
       ...parseFiles(studyPathMd).map((f) => ({ ...f, name: 'Study Path' })),
-      ...parseFiles(rolesMd).map((f) => ({ ...f, name: 'Roles: RM vs IC' })),
+      ...parseFiles(rolesMd).map((f) => ({ ...f, name: 'Roles: RM / IC / PM-Assistant' })),
       ...parseFiles(interviewMds).map((f) => ({
         ...f,
         name: interviewNameMap[f.name] || f.name,
@@ -743,7 +743,7 @@ export default function App() {
                 <div className="home-cta-text">
                   <div className="home-cta-title">New here? Start with the 7-day path.</div>
                   <div className="home-cta-desc">
-                    The study path tells you what to read each day. Before that, read <em>Roles: RM vs IC</em> to calibrate your emphasis.
+                    The study path tells you what to read each day. Before that, read <em>Roles: RM / IC / PM-Assistant</em> to calibrate your emphasis.
                   </div>
                 </div>
                 <button

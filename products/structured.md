@@ -44,7 +44,9 @@ Structured notes distributed in Singapore are **Specified Investment Products (S
 | Observation date | 觀察日 | Scheduled dates when autocall / KO / KI tests are run (daily, monthly, quarterly) | autocallable, range accrual, accumulator |
 | Memory coupon | 記憶型配息 | Missed coupons accrue and are paid in the first period a coupon condition is met | autocallable |
 | Principal protected | 保本 | Issuer guarantees par return at maturity; client gives up most of the option premium to fund this guarantee | PP-ELN, capital-guaranteed notes |
-| Issuer call | 發行人贖回權 | The issuer (bank) has the right to redeem the note early at par | callable range accrual, callable deposits |
+| Issuer call | 發行人贖回權 | The issuer (bank) has the right to redeem the note early at par | callable range accrual / CDRAN, callable deposits |
+| Bonus level | 紅利觸發水準 | Upside threshold at maturity; if underlying closes at/above, client receives a conditional bonus coupon | BEN |
+| Participation rate | 參與率 | In bonus / PP variants, the fraction of above-strike upside paid to the client at maturity | BEN, PP-ELN |
 
 All of these are option-theoretic primitives covered in [`derivatives.md`](derivatives.md) — I am not re-deriving barriers, parity, or Greeks here. Pull that page up in another tab.
 
@@ -124,7 +126,11 @@ Three paths:
 
 ### 3. FCN — Fixed Coupon Note (固定配息結構型票據)
 
-**Mechanism.** A close cousin of the KI-ELN and a first-generation autocallable. The FCN pays a **guaranteed, fixed coupon** (the "fixed" in the name) on scheduled dates regardless of the underlying's path. Principal, however, is at risk: at maturity, if the underlying is above the strike, par is returned; if below (or if a knock-in barrier was breached during the tenor), the client is delivered stock at strike — same short-put economics as the ELN. Most FCNs include an **autocall / knock-out feature** where, if the underlying closes at or above an autocall level (often 100% of initial) on a scheduled observation date, the note terminates early with par + the accrued coupons paid through.
+> **Hero product for PM-Assistant / EAM-Junior roles.** At an EAM or boutique whose daily investment activity is dominated by structured-product flow (e.g. the CW Asset Management target-firm profile), the **FCN is the single most-booked product**. Expect the CIO interview to drill the full lifecycle — not just mechanics, but observation-date decisions, KI response, autocall reinvestment, sizing against the client's total book, and issuer-credit discipline. The sub-sections under "**FCN lifecycle management**" below are written specifically for this role.
+
+**Mechanism.** A close cousin of the KI-ELN and a first-generation autocallable. The FCN pays a **guaranteed, fixed coupon** (the "fixed" in the name) on scheduled dates regardless of the underlying's path. Principal, however, is at risk: at maturity, if the underlying is above the strike (or, in worst-of variants, if the worst-performing underlying is above its strike), par is returned; if below (or if a knock-in barrier was breached during the tenor), the client is delivered stock at strike — same short-put economics as the ELN. Most FCNs include an **autocall / knock-out feature** where, if the underlying (or worst-of) closes at or above an autocall level (often 100% of initial) on a scheduled observation date, the note terminates early with par + the accrued coupons paid through.
+
+**Typical Asian PB shelf specs.** The textbook FCN is 12-month single-underlying, but the **dominant form on Asian EAM shelves is a 6-month worst-of-2 or worst-of-3**, with 2–3 liquid names (US mega-caps or HK blue-chips) in the basket. Coupons typically **10–13% p.a.** at current vol regimes; quarterly observation is standard; KI barrier 65–70% of initial; autocall at 100% of initial from month 3 or 6. Issuers dominant in this market: **BNP Paribas, UBS (pre- and post-CS), Julius Baer** — each with different pricing edges and credit profiles (see the Issuer credit note below).
 
 **In option terms.** Client is **long a coupon stream** (the fixed coupon) + **short a down-and-in put** on the underlying, struck at the strike with a KI barrier. The autocall adds an **issuer-favourable up-and-out trigger** on the short put (if spot rallies back up, the bank cancels the short put and the note dies at par — the bank wants this because their hedge gets cleaner and they recycle capital). From the client's view the autocall is a *nice-to-have*: they get their money back early with the coupons they were entitled to.
 
@@ -148,6 +154,84 @@ Path examples:
 **Sweet-spot client.** A client looking for a fixed, bond-like cashflow stream on a name they genuinely like, willing to own the underlying at the strike price, with a time horizon of 1-2 years that can absorb an early autocall (otherwise they need to redeploy on short notice). Often pitched to moderate-risk equity income seekers — **but the "bond-like" description is misleading**, and the RM's job is to resist that mental framing.
 
 **How it hurts the client.** The characteristic FCN disaster: the underlying trades sideways for 9 months, client happily collects 3 coupons thinking "this is just a bond", then the name gaps down through KI on a single earnings miss in month 10. From there it recovers to 150 at maturity — above KI but below strike. Client takes delivery at 180, stock is worth 150, books a 17% capital loss on delivery that the 10% coupon does not cover. The lived experience is: *one bad earnings print in month 10 wiped out nine months of apparent safety*, because the short-put risk was dormant the whole time until suddenly it wasn't. Worse variant: client had booked three different FCNs on correlated tech names; all three knock in in the same drawdown, all three deliver stock at strikes 25% above market. That's a credit event in the client's book without a credit event.
+
+---
+
+#### FCN lifecycle management (for PM-Assistant / EAM-Junior roles)
+
+The five sub-sections below are the **operational knowledge** a PM assistant is hired to own. At an EAM, the PM / CIO sets direction; the assistant runs the week-to-week workflow on booked structures. Be able to talk through all five in plain English.
+
+##### (a) When to use an FCN — the vol-and-client gating test
+
+An FCN makes sense only when **all three** conditions hold at trade date:
+
+| Condition | Concrete check | Why |
+|---|---|---|
+| **Elevated implied vol on the basket** | Headline coupon 10–13% p.a. on 6M worst-of-3 implies ~25–35% avg IV on the basket names, worst-of correlation ~0.4–0.6. If indicative coupons are below 7–8% for the same tenor/barriers, vol is too cheap — the coupon won't compensate for the tail. | The coupon **is** the short-vol premium. In a calm regime, the bank's hedging cost is low, so the client earns little for the embedded short put. Sit out; wait for a vol spike. |
+| **Client genuinely willing to own the worst-of at strike** | Ask name-by-name: "if we get delivered AAPL at $180 after it fell to $120, are you holding or selling at loss?" If answer is "selling," the name does not belong in the basket. | The FCN **is** a conditional forced purchase of the weakest basket name. A client who would panic-sell on delivery has bought an instrument incompatible with their behavioural profile. |
+| **Portfolio concentration allows it** | Post-delivery worst-case — if KI triggers AND worst-of delivers at strike — would this position bring any single-name exposure above ~10% of the client's total investable, or any sector exposure above ~25%? If yes, downsize or reject. | The KI-delivery leg turns notional into live equity. Stacking multiple FCNs on correlated basket names (all US mega-cap tech is one basket in a drawdown) creates concentration the client didn't intend to take. |
+
+**Vol-regime heuristic.** VIX < 15: FCN coupons are structurally thin; prefer DCI/ELN or just wait. VIX 18–28: sweet spot for FCN flow — coupons fat enough, vol mean-reversion is the baseline. VIX > 30: be cautious — the fat headline coupon may be compensating for a real drawdown underway; the KI you think is 30% OTM may be 15% OTM by Monday. Size smaller, pick less-volatile basket members.
+
+##### (b) How to manage a live FCN — the weekly / monthly workflow
+
+Once booked, the assistant's job is to monitor and to brief the PM / client at scheduled and exception-driven touch points:
+
+- **Weekly:** check spot levels for each basket name vs (i) KI barrier, (ii) autocall level, (iii) coupon-barrier (if present). Flag any name within 10% of its KI. Track realised-vs-implied vol if the issuer provides that on the term sheet.
+- **Each observation date:** know in advance whether an autocall is likely. If worst-of ≥ 100% of initial on the obs date, the note will autocall — the client needs to be told *before* the cash lands ("we expect FCN-0078 to be called Tuesday; I'll propose three reinvestment options at that time"). Do NOT let the client be surprised by par cash appearing in their account with no plan.
+- **On any KI breach:** immediate call to the PM, same-day. Do not wait for monthly review. Prepare the KI-response deck (see section (c) of §3 of this page's "Interview questions" for the canonical conversation — the Q3 answer is literally this job).
+- **Two weeks before final maturity:** prepare the final-settlement brief for the PM / client: probability of par return vs delivery, delivery amount at strike in shares, any listed-put hedge to consider, the cash redeployment plan if par is returned.
+- **Document everything.** MAS 626 / PB Code suitability requires a paper trail *per trade* — not per relationship. Each observation decision, each client conversation, each rejection-to-pitch-a-second-FCN-because-concentration should be logged. This is the PM-assistant's audit backbone.
+
+##### (c) Autocall and KI responses — the two scripted conversations
+
+**Autocall triggered.** The client gets par + accrued coupon back early. This is a "good" outcome at the trade level but a **reinvestment problem** at the portfolio level. Default PM-assistant brief: "FCN-X autocalled this morning at par + 2.5% coupon. Options: (1) roll into a similar 6M worst-of on the same basket at current vol — indicative coupon 10.5%; (2) step out of the theme if vol has compressed — hold in USD MMF at 4.8% until next opportunity; (3) rotate into a different basket — I've run indicatives on `[alt names]` and coupons are `[x%]`." The client decides; you prepare the documentation.
+
+**KI triggered (the hard call).** Near-verbatim script — memorise this until you can deliver it without hesitation:
+
+> "The `[underlying]` touched the KI barrier this morning at `[level]`. That means the structure's short-put leg is now active through final maturity, currently `[X]` months away. We have not realised a loss yet — nothing has settled. Three paths remain:
+> 1. `[Underlying]` recovers above strike `[strike]` by maturity → full par + all remaining coupons. This is roughly a `[P]` percent path based on current `[IV/skew]`.
+> 2. `[Underlying]` closes between strike and its current level → delivery at strike; capital loss = strike − final spot, offset partially by coupons received.
+> 3. `[Underlying]` falls further → bigger delivery loss.
+>
+> Three things you can do now: hold, unwind at the issuer's mid-mark (currently indicated at `[price]` — note this crystallises the loss now), or hedge the remaining short-put exposure with a listed put on the same underlying to cap the delivery loss. I don't recommend rolling this into a new structure — that's doubling the short-vol book in the wrong direction."
+
+This is the single most-tested FCN interview question. Nail the honesty, the math, and the refusal-to-double-down.
+
+##### (d) Position sizing — how much is too much
+
+A reasonable sizing framework for an EAM client's structured-product sleeve:
+
+| Check | Rule of thumb | Reason |
+|---|---|---|
+| **Structured-product sleeve as % of total investable** | ≤ 20% | Structured products are illiquid and short-vol; they shouldn't dominate a UHNW book |
+| **Single-issuer exposure within the sleeve** | ≤ 40% of sleeve (i.e. ≤ 8% of total) | Issuer default risk is real (Lehman 2008, CS AT1 2023) |
+| **Single-basket-name exposure** across all booked FCNs + any direct holdings | ≤ 10% of total on worst-case delivery basis | KI-delivery is conditional long equity; count it as such in concentration math |
+| **Correlated-basket exposure** (e.g. all US mega-cap tech) | ≤ 25% of total on worst-case delivery basis | In a drawdown, correlated baskets all KI together |
+| **Maximum number of live FCNs per client** | 5–8 | Above this, exception-monitoring breaks down; fewer larger positions beat many small ones |
+
+The CIO test question is typically: "Client has US$10M. Run me through how much FCN notional you'd write and across how many names over the next quarter." Answer with the sizing math explicit, not vibes.
+
+##### (e) Coupon-vs-vol sanity check — is the quote fair?
+
+Before booking, sanity-check the indicative coupon against the implied vol it corresponds to. Rough heuristic for a 6M worst-of-3 at 100% strike, 70% KI:
+
+- **Each 1% of annualised coupon ≈ 3–4 vol points on the worst-of-basket at these barrier levels** (this ratio is not stable across tenors/strikes, so calibrate to your issuer's indicatives over time).
+- If indicative coupon = 11% and you believe basket avg IV ≈ 28% with worst-of correlation 0.5, that's roughly consistent. If coupon = 7% at the same IV, the issuer is pricing in more margin — push back or shop elsewhere.
+- If coupon = 15% on the same parameters, ask why — either the KI is deeper than you think (risk you're missing), or there's idiosyncratic risk embedded in one basket name, or the issuer is desperate to move flow (legitimate but rare).
+
+At minimum, be able to price a single-name ELN's coupon against listed-option alternatives: "I could sell a 6M 80% strike put on AAPL on the listed market and earn roughly `[Y]%` annualised — is this FCN's incremental coupon worth the worst-of basket risk and the bespoke illiquidity?" The answer is often yes, but only if you've checked.
+
+##### (f) Issuer credit discipline
+
+A structured note's par-return leg is **unsecured senior debt of the issuer**. Before picking an issuer for a client's FCN, check (at minimum):
+
+- **Issuer senior CDS and credit rating** — is it consistent with the client's credit-quality expectations for their bond allocation? A client unwilling to hold subordinated bank debt should not book an FCN from an issuer trading wide.
+- **Franchise-specific fault lines** — UBS integrated Credit Suisse in 2023 and now carries CS-era legal tail risk; BNP is a French SIB with strong equity-derivatives franchise; JB has no investment-banking balance sheet but smaller capital base. Each has a different "what would a bad year look like" profile.
+- **Diversify across issuers** — as above, single-issuer exposure should be capped. At an EAM with BNP + UBS + JB relationships, distribute FCN notional across all three rather than concentrating with the cheapest quote.
+- **Watch the AT1 / senior spread** — post-March 2023 CS AT1 write-down, the market re-priced bank subordination risk. If an issuer's AT1-senior spread is widening rapidly, it's a leading signal that their senior unsecured is next to re-price — which directly affects the par leg of any structured note you've booked with them.
+
+The interview question here is: "why not just use the cheapest issuer every time?" Answer: the cheapest quote usually reflects either worse credit (client pays for it in stress) or a squeeze to move year-end inventory (OK for tactical but not a long-term relationship default). Good issuer discipline is spread across counterparty relationships for the same reason you diversify a bond book.
 
 ---
 
@@ -228,7 +312,10 @@ Bad case (2008-style): HSBC gaps from HK$60 to HK$42 over 2 months. Daily observ
 
 ---
 
-### 6. Range Accrual and Callable Range Accrual (區間計息票據)
+### 6. Range Accrual and Callable Range Accrual / CDRAN (區間計息票據)
+
+> **CDRAN (Callable Daily Range Accrual Note)** is the common PB-shelf acronym for the callable-variant below. Same product, same mechanics; just the Asian-PB naming convention. If a term sheet says "CDRAN on 3M SOFR," it is exactly the callable range accrual described here.
+
 
 **Mechanism.** The client earns a high coupon that accrues **daily**, but only on days when a reference rate or index closes **within a pre-agreed range** (e.g., 3M USD SOFR between 4% and 5.5%; or USD/SGD between 1.32 and 1.38). Days outside the range contribute zero to the coupon. Tenors are typically 1–5 years. The **callable** variant adds an **issuer call** — the bank can redeem the note early at par on scheduled call dates, which it will rationally do when the structure becomes unfavourable to the bank (i.e., when rates stay stubbornly in range and the bank is paying a rich coupon).
 
@@ -252,6 +339,44 @@ If SOFR rips above 5.5% (Fed hikes): accrual ratio drops; client earns partial c
 
 ---
 
+### 7. BEN — Bonus Enhanced Note (紅利增強型票據)
+
+**Mechanism.** A BEN is a medium-dated note (typically 6–18 months) combining **downside short-put economics with a conditional upside bonus**. Three payoff regions at maturity define it:
+
+1. **Underlying (or worst-of) closes at or above an upside "bonus level"** (typically 100–110% of initial) → client receives par **plus a bonus coupon** (fixed % paid at maturity, often 5–10% of notional) and, in participation variants, any additional upside above the bonus level at a defined participation rate (e.g. 50%). This is the "best path."
+2. **Underlying (or worst-of) closes between a strike (typically 60–80% of initial) and the bonus level**, AND the KI barrier was **never breached** intra-tenor → client receives par back. No bonus, no loss. The KI never armed, so the short put never activated.
+3. **KI breached at any point during the tenor AND underlying closes below strike at maturity** → client delivered underlying (or worst-of) at strike, identical to an ELN / FCN loss profile.
+
+The defining difference vs FCN: **BEN does not pay fixed coupons on scheduled dates** — it pays **only at maturity**, and only conditionally. The attraction is the bonus kicker + sometimes upside participation; the risk is that a client sitting on a BEN for 12 months earns nothing if the underlying drifts sideways and closes just below the bonus level — this is the "zero-coupon drought" risk that distinguishes BEN from FCN.
+
+**In option terms.** Client is **long a digital cash-or-nothing call** (pays the bonus if underlying ≥ bonus level at maturity) + possibly **long a call** above the bonus level (participation variants) + **short a down-and-in put** on the underlying at strike (the KI-armed short put). The short put is the same risk engine as in ELN/FCN; the digital-call bonus replaces FCN's fixed-coupon stream.
+
+**Illustrative numeric example.** 12-month single-underlying BEN on **Tesla** at spot **US$250**:
+
+- Notional: **US$500,000**.
+- Strike: **US$175** (70% of spot).
+- KI barrier: **US$150** (60% of spot), continuously observed.
+- Bonus level: **US$275** (110% of spot).
+- Bonus coupon: **12%** of notional paid at maturity, if final close ≥ bonus level.
+- Participation above bonus: **50%** of any upside above $275, if final close is there.
+
+Paths:
+
+| Path | Final close | KI touched? | Outcome |
+|---|---|---|---|
+| **A. Bonus hit** | $290 | No | Par + 12% bonus + 50% × (290-275)/250 × notional = $500k + $60k + $15k = **$575,000** (+15% over 12M) |
+| **B. Middle / sideways** | $200 | No | Par only: **$500,000**. Zero return for 12 months — the "coupon drought." |
+| **C. KI breach then recovery** | $190 | Yes (touched $145 in month 4) | Short put armed; final close 190 > strike 175 → **par returned**: **$500,000**. The KI scare was harmless because close is above strike. |
+| **D. KI breach and final below strike** | $140 | Yes | Delivered TSLA at strike 175 → receive 500,000/175 = 2,857 shares worth 2,857 × 140 = **$400,000**. Net loss ~20%. |
+
+**Sweet-spot client.** Constructive on the underlying over 12M, willing to own at strike, but specifically wants **asymmetric upside** — accepts giving up the fixed FCN coupon in exchange for a shot at bonus + participation if their view plays out. Typical pitch: "You want exposure to TSLA with a 30% downside buffer and a 12% kicker if it rallies — the BEN gives you that; the FCN pays you quarterly regardless but doesn't participate in the upside." The trade-off is explicit — buyer of BEN sees FCN as "leaving rally upside on the table."
+
+**How it hurts the client.** The "coupon drought" path is the underrated risk: the underlying trades sideways for 12 months, closes just below the bonus level, KI is never breached, client gets par back and realises they locked up capital for a year for literally zero return. This is often worse than an FCN on the same basket, because an FCN would have paid fixed coupons along the way. Worse variant: client books two BENs on correlated names, both drift sideways, the assistant now has two years of zero-return drag on the portfolio-level PnL review.
+
+**vs FCN — decision-tree-line.** If the client wants **predictable periodic income**, FCN. If the client wants **upside participation + downside buffer + accepts zero-return path**, BEN. If the client wants both, the answer is usually "split the sleeve" — half FCN for coupon stream, half BEN for optionality.
+
+---
+
 ## Payoff / Economics — cross-product comparison
 
 All numbers illustrative. "Worst-case" assumes the adverse-path scenarios described in each sub-section.
@@ -262,10 +387,11 @@ All numbers illustrative. "Worst-case" assumes the adverse-path scenarios descri
 | **PP-ELN (principal-protected)** | 1–3 years | 1–3% | Par returned, but coupon may be zero and opportunity cost of idle capital | None, early unwind at issuer's mark | Conservative client who wants equity-flavoured return with absolute par guarantee (but probably misallocated — buy stock + listed put) | Long bounded call spread on underlying |
 | **Vanilla ELN** | 1–6 months | 6–15% | Delivered stock at strike; loss = strike − final price + coupon offset | None | Client who'd buy the underlying at strike anyway | Short European put |
 | **KI-ELN** | 3–12 months | 8–20% | Stock delivery after KI breach; loss same shape as vanilla but conditional | None | Client constructive on underlying, wants larger coupon, understands KI is a cliff | Short down-and-in European put |
-| **FCN** | 6–24 months | 7–12% (fixed, guaranteed) | Stock delivery at strike on worst path; coupons received are booked but don't offset delivery loss fully | None | Client wanting bond-like cashflow on a stock they like; vulnerable to the "bond-like" misframe | Short down-and-in put + autocall (up-and-out cancellable) |
+| **FCN** (single or worst-of-2/3) | 6–24 months (6M worst-of-3 dominant on Asian EAM shelves) | 7–13% (fixed, guaranteed) | Stock delivery at strike on worst path; coupons received are booked but don't offset delivery loss fully | None | Client wanting bond-like cashflow on names they like; vulnerable to the "bond-like" misframe | Short down-and-in put (or worst-of put) + autocall (up-and-out cancellable) |
+| **BEN (Bonus Enhanced Note)** | 6–18 months | 0% interim; 5–12% conditional bonus at maturity + possible upside participation | Same delivery loss shape as FCN on KI-breach; "coupon drought" if underlying drifts sideways and closes below bonus level | None | Client constructive on underlying, wants asymmetric upside, accepts zero-return sideways path | Long digital cash-or-nothing call + (variant) long call above bonus level + short down-and-in put |
 | **Autocallable (worst-of basket)** | 1–3 years | 8–15% (worst-of basket lifts the coupon) | Worst-of basket breaks below KI; delivery of weakest underlying at 100% strike; potential 30–50% drawdown | None; illiquid mid-tenor | Aggressive AI client constructive on ALL basket names, willing to own the worst-of at the bottom | Short down-and-in worst-of put + long contingent coupon stream |
 | **Accumulator** | 3–12 months daily | Effective yield hard to quote — it's a trade, not a coupon | Unlimited downside accumulation at 2× at strike; the 2008 HK disaster shape | None; mark-to-market gets worse as stock falls | Narrow — explicitly understands 2× leg, has cash, wants the underlying at strike regardless of path | Short strip of daily 2×-leveraged puts + short issuer knock-out option |
-| **Range Accrual** | 1–5 years | 5–10% (headline; realised can be much lower) | Reinvestment risk if called early; coupon collapse if range is breached; negative convexity | None | Client with a specific range view on a rate or FX pair, happy to accept reinvestment risk | Long strip of daily digitals + (callable variant:) short Bermudan issuer call |
+| **Range Accrual / CDRAN** | 1–5 years | 5–10% (headline; realised can be much lower) | Reinvestment risk if called early; coupon collapse if range is breached; negative convexity | None | Client with a specific range view on a rate or FX pair, happy to accept reinvestment risk | Long strip of daily digitals + (callable variant:) short Bermudan issuer call |
 
 **The single unifying statement:** every yield-enhancement product in this table is the client selling an option. The coupon size and the worst-case loss size scale together, because they are the same quantity viewed from the two halves of the distribution.
 
@@ -293,8 +419,13 @@ Client wants equity-flavoured yield and has a specific underlying they like
 │
 Client wants fixed, predictable coupon (bond-like framing) on equity exposure
 │
-├── Single-underlying preference, 1-2 year tenor → FCN
-└── Willing to take multi-underlying worst-of for larger coupon → Autocallable
+├── Single-name, 6-12 month tenor → FCN (single underlying)
+├── 2-3 names, 6M tenor (dominant Asian EAM form) → FCN (worst-of-2 or worst-of-3)
+└── Willing to take longer tenor / larger basket for bigger coupon → Autocallable
+│
+Client wants asymmetric upside with a downside buffer and accepts zero-return sideways path
+│
+└── → BEN (Bonus Enhanced Note) — not a substitute for FCN; fundamentally different payoff profile. Consider splitting sleeve: half FCN (for coupon stream), half BEN (for optionality).
 │
 Client wants the maximum possible coupon and accepts multi-underlying basket risk
 │
@@ -367,6 +498,7 @@ Client has a specific rate or FX-range view
 
 ## Related products
 
+- [`issuers.md`](issuers.md) — Issuer-side perspective: BNP / UBS / JB franchise notes, post-CS AT1 read-through, how an EAM picks between issuers, diversification caps. Companion page to this one for PM-Assistant / EAM-Junior candidates.
 - [`derivatives.md`](derivatives.md) — Option primitives (call/put, barrier, knock-in/knock-out, worst-of), Greeks, payoff diagrams, put-call parity, forward pricing. Every page on this page inherits from that one; if anything above felt opaque, the answer lives there.
 - [`fx.md`](fx.md) — DCI-as-FX mechanics (spot/forward points, covered interest parity, NDF variants for restricted currencies), FX options and barriers, FX hedging use-cases.
 - [`fixed_income.md`](fixed_income.md) — Callable and puttable bonds (the "callable" cousin of the range accrual), perpetuals with call features, make-whole mechanics, and the "structured note vs bond" suitability conversation.

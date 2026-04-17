@@ -1,6 +1,8 @@
 # Firm Briefs — Target Firm + Peer Landscape
 
-> **Compiled 2026-04-17 from public sources** (firm websites, MAS Financial Institutions Directory, LinkedIn, wealth-management press — Hubbis, Asian Private Banker, WealthBriefingAsia, finews.asia). Knowledge-cut caveat: my training data ends January 2026; AUM / headcount / recent hires may be stale. Verify within 48 hours of interview via LinkedIn and the firm's own press.
+> **Compiled 2026-04-17, verified against live public sources same day** (cwamsg.com/about, MAS Financial Institutions Directory, RocketReach-aggregated LinkedIn, finews.asia). Items marked ⚠️ remain unverified — default to LinkedIn + firm website check within 48 hours of interview.
+>
+> **Last live-verified: 2026-04-17** (MAS directory was last updated 2026-04-01 — licence current).
 >
 > **How to use:** read the Target Firm section first (CW Asset Management), then the Peer Landscape section to calibrate answers to "why CW over other EAMs." Use the comparative table at the end to seed specific talking points.
 
@@ -20,47 +22,58 @@ CW 不是銀行，是**獨立資產管理公司 (EAM / MFO)**。這讓面試的�
 | **Business model** | **External Asset Manager (EAM) + Multi-Family Office (MFO)** — NOT a licensed bank |
 | **MAS licence** | Capital Markets Services (CMS) Licence for Fund Management + Exempt Financial Adviser |
 | **Permitted advisory scope** | Collective investment schemes, securities, exchange-traded derivatives, OTC derivatives, spot FX, structured deposits |
-| **Incorporated** | ~2021 (≈ 4–5 years old as of April 2026) ⚠️ verify exact |
-| **Office** | 138 Market Street, CapitaGreen, Singapore 048946 |
+| **Incorporated** | 2021 (MAS UEN **202132716Z** — the "2021" prefix confirms SG-incorporation year; ≈ 5 years old as of April 2026) |
+| **Office** | 138 Market Street #05-01, CapitaGreen, Singapore 048946 |
 | **Website** | [cwamsg.com](https://www.cwamsg.com) |
-| **Custody partners** | Hong Kong, Singapore, London, Liechtenstein, Zurich (unnamed "premier private banks and brokerage firms") |
-| **Client focus** | UHNW / HNW, Greater China emphasis (inferred from CEO's background) |
+| **Booking centres** | Hong Kong, Singapore, London, Liechtenstein, Zurich |
+| **Custody partners** | **Julius Baer** named on website (partner logos); additional "premier private banks and brokerage firms" — UBS highly likely given CEO's background |
+| **Services shown on site** | Wealth Management, Asset Management, Family Office, Fintech |
+| **Client focus** | UHNW / HNW clients "across the world"; Greater China emphasis (inferred from CEO's background and language choices) |
 | **Tagline** | "Create the Wealth" |
-| **Investment philosophy** | "Managing risk, not avoiding it" (Benjamin Graham quote) |
-| **CEO** | Harry Chen (Chen Wei-Chih) — founder |
-| **AUM** | Not disclosed ⚠️ likely US$500M–2B range given founder-stage |
-| **Team size** | Not disclosed ⚠️ likely 5–20 headcount |
+| **Investment philosophy** | "Managing risk, not avoiding it" (Benjamin Graham quote on site) |
+| **CEO** | Harry Chen (Chen Wei-Chih / 陳維志) — founder |
+| **Team description** | "Professionals from renowned private banks, investment banks, family offices, insurance companies and accounting firms" (no individuals named publicly) |
+| **Recent recognition** | **Multiple honours at the Global Private Banking Innovation Awards 2025** (stated on homepage) — material credibility signal for a 5-year-old EAM |
+| **AUM** | Not disclosed ⚠️ estimate US$500M–2B range given founder-stage, 4-year operating history, UHNW client base |
+| **Team size** | Not disclosed ⚠️ estimate 5–20 headcount; the non-public team page suggests a still-small firm |
 
 ### CEO — Harry Chen
 
 | Item | |
 |---|---|
-| **Full name** | Chen Wei-Chih (陳維志 likely; also "Chen Harry" in MAS filings) |
-| **Role** | Founder & CEO of CW Asset Management (since ~2021) |
+| **Full name** | Chen Wei-Chih (陳維志) — also "Chen Harry" in MAS filings |
+| **Role** | Founder & CEO of CW Asset Management (firm incorporated 2021; Harry's tenure recorded as 2022–present per public LinkedIn) |
 | **Base** | Singapore |
 | **LinkedIn** | [harry-chen-87541913](https://www.linkedin.com/in/harry-chen-87541913) |
-| **Experience** | 13+ years international banking — retail, corporate, private banking |
-| **Prior firms (chronological)** | Societe Generale Private Banking → UBS → **Julius Baer (last role)** → founded CW |
-| **Geographic focus throughout career** | **Greater China** (TW, HK, mainland) |
-| **Education** | M.Eng. (Engineering / Industrial Management), George Washington University, 2006–2008 |
+| **Total banking experience** | **23+ years** (career started 2003 at WaMu; not "13+" as previously estimated) |
+| **Prior firms (full chronology)** | Washington Mutual Bank (Corporate Account Director, 2003–2008) → Citi (IPB Business Manager, 2010–2012) → Société Générale Private Banking (Associate Director, 2012–2013) → UBS (Associate Director, 2013–2018) → **Julius Baer (Director, 2018–2021)** → founded CW Asset Management (2022–present) |
+| **Geographic focus throughout career** | **Greater China** (TW / HK / mainland) — Hong Kong and Singapore booking centres during the Swiss-PB years |
+| **Education** | BBA Finance, **Seattle Pacific University** (1999–2003); MBA International Business, **University of Washington Michael G. Foster School** (2005–2006); M.Eng. Engineering / Industrial Management, **George Washington University** (2006–2008) |
 
 **Inferences (not confirmed):**
-- **Taiwanese origin is very likely** ⚠️ — Chinese name + GWU path + career entirely on Greater China RM track strongly suggest TW origin; high cultural / language overlap with a Taiwanese candidate.
+- **Taiwanese origin is very likely** ⚠️ — Chinese name + career entirely on Greater China RM track + Taiwanese-style English transliteration of given name ("Wei-Chih") strongly suggest TW origin; high cultural / language overlap with a Taiwanese candidate.
 - **Engineering-Master's background** signals comfort with quantitative / mechanism-based reasoning rather than adjective-stacking; calibrate your answers to mechanism, not vibes.
-- **Public profile is low** — no industry-conference speaking, no published op-eds / podcasts found. Harry keeps a lower public profile than many EAM founders; he runs the firm, not the brand.
+- **Public profile is low** — no industry-conference speaking, no published op-eds / podcasts found as of 2026-04-17. Harry keeps a lower public profile than many EAM founders; he runs the firm, not the brand.
+- **Founding pattern: build-from-inside** — note the 2-3 year layoff between WaMu (ended 2008) and Citi IPB (started 2010) likely corresponds to the full-time MBA + M.Eng. studies (2005–2008). His career went academic-reinvestment → international banking → Swiss PB ladder → founder. This is the "deliberate builder" archetype, not the "jumping for the next paycheck" archetype.
 
-### What I couldn't find publicly
+### What I couldn't find publicly (verified absent as of 2026-04-17)
 
-- Specific AUM
-- Team / named partners (nothing beyond Harry on website / LinkedIn that I could access)
+- Specific AUM (not disclosed on website, not in MAS directory)
+- Named team members (cwamsg.com/team and /zh/team-4 return 404 — the team page exists but access may be conditional, or not yet published)
 - Specific client mix split (TW vs mainland vs SEA vs global)
-- Specific custody partners named (likely Julius Baer and UBS given Harry's history)
-- Recent news / hires / client wins
+- Full custody-partner roster (only Julius Baer confirmed via site logos; others inferred)
+- Recent news / hires / client wins beyond the 2025 Innovation Awards mention
+
+**48-hour-before-interview re-checks that would matter most:**
+- Any 2026 Asian Private Banker / Hubbis / finews.asia article naming CW.
+- LinkedIn "People" tab for cwampteltd company page — headcount visible there.
+- Harry's LinkedIn posts / activity in last 30 days.
+- Google News "CW Asset Management" for the 2025 award context and any follow-up.
 
 ### Very likely interview topics (based on Harry's background + firm profile)
 
 1. **Greater China client depth** — TW regulation (CBC annual US$5M quota, 20% estate tax, overseas-income minimum tax); HK vs SG booking choice; cross-strait politics sensitivity.
-2. **Julius Baer / UBS / SocGen specific product or process knowledge** — Harry will spot fakery; if you've worked at those banks, drill the specifics.
+2. **Julius Baer / UBS / SocGen / Citi IPB / WaMu specific product or process knowledge** — Harry's career spans 23+ years across five institutions; he will spot fakery. If you claim exposure to any of these franchises, drill the specifics.
 3. **EAM business-model understanding** — custody/advisory split; operational load; multi-custody reporting (Addepar, Etops, or equivalent).
 4. **Book-transfer honesty** — Harry will probe *hard* given his own RM background. Calibrate transferable-% carefully; defend name-by-name if claimed.
 5. **Specific products** — CW's open architecture means depth-questions on structured products (DCI, ELN, autocallable), Asian credit (post-CS AT1 lesson).
@@ -99,7 +112,7 @@ CW 不是銀行，是**獨立資產管理公司 (EAM / MFO)**。這讓面試的�
 - "The MAS 13O / 13U family-office inflow — is CW positioning to serve those newly-landed families?"
 
 **Personal:**
-- "Your path went SocGen → UBS → Julius Baer → founding CW — what was the moment you decided to build rather than continue at JB?"
+- "Your career arc went WaMu → Citi IPB → SocGen → UBS → Julius Baer → founding CW — twenty-plus years of institutional PB experience before building. What was the specific moment at JB when you decided to build rather than continue climbing the bank ladder?"
 - "What's something you didn't expect about running your own firm after 13+ years inside big banks?"
 - "In 5 years, what would make you look back and be proud of what CW built?"
 
@@ -225,6 +238,10 @@ Below are five comparable independent wealth firms. Use these for calibration wh
 **If Harry asks "Why not just go to Raffles Family Office?":**
 
 > "RFO is the scale-platform version of what CW is becoming. 150 people, dual-HQ, Asia-wide. That's a more institutional experience for both clients and employees. For a client who wants access to a proper MFO platform with multiple cities and more advisory layers, RFO is a good answer. For a client — and an employee — who value founder-direct engagement and the opportunity to shape a firm's culture rather than join a 150-person machine, CW is the better fit. I'm looking for the latter."
+
+**Optional: referencing the 2025 Innovation Awards.** You don't need to lead with this, but if the conversation opens a door:
+
+> "The multiple honours at the 2025 Global Private Banking Innovation Awards stood out to me as an external signal — a 4-year-old firm being recognised that way is usually a platform-building or client-outcome signal that's hard to fake in industry-voted awards. That, plus your own career trajectory, is what made CW specifically the firm I spent most of my research time on."
 
 **If Harry asks "Taurus has been around 15+ years and has US$3B — why not them?":**
 

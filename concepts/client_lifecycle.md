@@ -109,6 +109,8 @@ Send one thoughtful follow-up: summary note of the conversation, one piece of re
 
 Once the prospect agrees to move forward, onboarding is a 2–6 week operational sprint. This is where many deals die of friction.
 
+> **EAM / PM-Assistant readers:** this phase at an EAM is a **3–6 month** process — not 2–6 weeks — because the custodian bank's KYC is the critical path, not the EAM's own paperwork. See [`../regulation/account_opening_kyc.md`](../regulation/account_opening_kyc.md) for the EAM-specific timeline, custodian-bank thresholds (LGT / JB / UBS / BNP), SoW/SoF documentation load, and the PM-Assistant's shepherding role.
+
 ### The onboarding pipeline
 
 | Step | Duration | Owner | Output |
@@ -226,11 +228,45 @@ The first 90 days determine whether this relationship builds trust or bleeds it.
 | Semi-annual | CIO house view refresh, broader strategic conversation |
 | Annual | Full IPS review, suitability refresh, AI re-opt-in, FATCA / CRS re-certification if triggered, family / life-event check-in |
 
+### Portfolio briefing — the quarterly review (PM-Assistant / EAM-Junior view)
+
+> For PM-Assistant / EAM-Junior roles the quarterly portfolio review is **the** recurring client-facing deliverable. The PM or CIO may lead the meeting, but the assistant owns **preparing the deck, narrating the numbers, and fielding the second-order questions** ("why did we lose money on X"). Expect this to be asked in the interview: "walk me through how you'd put together a quarterly review for a US$20M client."
+
+**The seven-section deck structure.** Keep the deck short — 10–15 slides for most UHNW clients. The client's attention budget is 45 minutes; budget the deck for 25 of those minutes so 20 are live conversation.
+
+1. **Executive summary (1 slide).** Three bullets: period PnL, major changes, our recommendation for the coming quarter. Nothing else on this slide. The client reads this on the Uber in; the rest of the deck is for the meeting.
+2. **Performance (2–3 slides).** Absolute return (period, YTD, since-inception); return vs agreed benchmark (typically a composite: 60% MSCI ACWI / 40% Bloomberg Global Agg, or a client-specific one from the IPS); contribution by asset class. Be explicit about benchmark construction — "vs 60/40 global" is meaningless without the indices.
+3. **Attribution (1–2 slides).** Where did the return come from? Top 3 positive contributors; top 3 detractors. For each, one-sentence explanation — not a narrative, just the fact. "AAPL +8% contributed +0.7%; we had 9% allocation." Attribution is *numbers* not *stories*; save stories for the verbal portion.
+4. **Risk exposures (1–2 slides).** Current allocation vs IPS target; currency exposure (USD / SGD / CNH / EUR / other breakdown); top 10 single-name equity positions as % of total; sector exposure; duration / credit profile on the bond sleeve; live structured-product positions with KI headroom. The risk page is **not** the place to be optimistic; it is the place to be clear-eyed about concentration.
+5. **Changes since last review (1 slide).** What we added / trimmed / rotated, with reason per move. Two columns — "trade" and "reason" — no more. If the list is long, the assistant should be worried, not proud.
+6. **Outlook (1 slide).** Firm's view on the coming quarter — rates, USD, equities, credit — in 3–4 lines. This should match the CIO's written view; divergences must be explicit and marked as such.
+7. **Recommendations (1–2 slides).** 2–4 specific actions for the coming quarter. Each: action, size, rationale, what we'd need to see to change our mind. Aligned with the `interview/cio_drill.md` "conviction trade" discipline — specific, not vibes.
+
+**Delivery mechanics.** The assistant typically drafts the deck by **Tuesday of the review week**, reviews it with the PM on Wednesday, incorporates PM feedback by Thursday, sends the final to the client in advance of Friday's meeting. The Tuesday draft should already be 90% of the final deck — the PM's job is to sharpen the narrative, not to construct the numbers.
+
+**Tone for the UHNW client.** Peer-to-peer, not teacher-to-student. The client is often richer and older than everyone in the room; talking down is an immediate disqualifier. Acknowledge what they already know ("you'll have seen the inflation print on Tuesday"); narrate what they may not ("we took that signal to trim the tech sleeve by 3% on Wednesday; here's the residual exposure"); ask for their reaction before telling them yours ("how are you thinking about it?"). Do not over-explain — a client who asks for more will; a client who doesn't ask isn't confused, they're deciding.
+
+**The "why did we lose money on X" conversation.** The single hardest moment of the review. A disciplined script:
+
+1. **Name the position and the loss in one line.** "Our TSLA position is down 18% in the quarter, contributing −0.8% to the portfolio." Do not euphemise; "some headwinds" loses trust faster than the loss itself.
+2. **State the thesis that was wrong and *why* it was wrong.** "We held on the expectation that delivery numbers would reaccelerate into Q2; they didn't, because `[specific reason]`."
+3. **State what we did about it.** "We cut the position by 40% in mid-February at $X and redeployed into the index. The residual is a core position with a 24-month horizon and I'll be watching delivery cadence."
+4. **Offer the client the decision if it's still open.** "We can trim further or hold; my view is hold, but if you'd prefer to exit fully given the drag, we can do it this morning." The client may say "hold" but they want to be *offered* the choice. Ownership of the decision stays with them; the judgement comes from you.
+
+**What NOT to do in the briefing:**
+
+- **Do NOT bury the bad news on slide 14.** It lands harder when the client discovers it themselves than when you name it on slide 3.
+- **Do NOT read the deck.** The deck is reference; your job is conversation. If you're reading, the client is reading faster.
+- **Do NOT blame the market.** "The market sold off" is true of everyone's book; the question is "what did we do about it," which is our responsibility.
+- **Do NOT exceed the meeting time.** 45 minutes is a budget; running over signals you don't respect the client's schedule.
+- **Do NOT make promises about next quarter.** "We think" and "our view is" are legitimate; "we'll get this back" is not.
+
 ### Documentation discipline
 
 - Every trade: suitability memo with client context + rationale. Retain 5+ years.
 - Every material conversation: note in file with date, topic, decisions.
 - Every drift from IPS: documented with rationale (e.g. tactical satellite position outside SAA band, flagged and client-acknowledged).
+- Every quarterly-review deck delivered: saved with date, attendees, decisions taken, client mood (flagged qualitatively — "concerned about TSLA"). The next quarter's prep starts from this file.
 
 This is both good service AND suitability defence — if MAS or internal audit reviews your book, the file quality is what matters.
 
@@ -349,3 +385,5 @@ Relationships end. Handle them well — how you handle an ending is often what p
 - [`../cases/`](../cases/) — the five case studies are snapshots of the lifecycle at different stages.
 - [`../regulation/mas_notice_626.md`](../regulation/mas_notice_626.md), [`accredited_investor.md`](../regulation/accredited_investor.md), [`fatca_crs.md`](../regulation/fatca_crs.md) — compliance layer that wraps each phase.
 - [`../business_plan/template.md`](../business_plan/template.md) — pipeline planning for the prospecting phase.
+- [`../products/issuers.md`](../products/issuers.md) — issuer-side perspective on structured-product decisions discussed in quarterly reviews; PM-Assistant-relevant.
+- [`../interview/cio_drill.md`](../interview/cio_drill.md) — the outlook / recommendations sections of the quarterly briefing ride on the market-view discipline rehearsed here.

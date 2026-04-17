@@ -30,6 +30,7 @@ RM (Relationship Manager) 是**客戶關係的 owner**——扛 AUM、扛新客�
 - **RM** (UBS, Credit Suisse-era, Julius Baer) = **Private Banker** (JPM, BOS) = **Relationship Manager** (most Asian PBs). Same function.
 - **IC** (UBS, HSBC, DBS) = **Investment Advisor** (JPM, Citi) = **Investment Specialist** = **Portfolio Counselor**. Same function.
 - **IC is distinct from PM (Portfolio Manager / DPM Manager)**. PM is the discretionary portfolio manager who takes full authority over a mandate; IC sits in the **advisory** flow where the client decides. The PM path is a separate role entirely (often on the CIO / investment-management side of the house) — don't conflate.
+- **"Assistant to the PM" / "Investment Analyst" / "Investment Associate" at an EAM or Multi-Family Office** is a distinct third shape — closer to **junior IC reporting directly to CIO** than to either bank RM or bank IC. No personal AUM, no business plan, no book-transfer story expected. The hired deliverable is (a) constructing product combinations against client objectives, (b) preparing and delivering portfolio reviews with the PM, (c) maintaining a live market view aligned with the CIO's. See the PM-Assistant emphasis path below.
 
 ---
 
@@ -105,26 +106,56 @@ The content in this repo isn't duplicated; it's just read with different emphasi
 3. **How you work with RMs without undermining them** — story bank item #7 in the BQ/stories set. The classic IC failure mode is making the RM look bad in front of the client; the best ICs elevate the RM while bringing expertise.
 4. **Answering "what's your conviction trade right now?"** — expect this. Have two or three specific trades you'd pitch TODAY with a clear thesis, entry, stop, size.
 
+### PM-Assistant / EAM-Junior emphasis path
+
+Use this if the role is framed as "Assistant to the Portfolio Manager," "Investment Analyst," or any junior investment-side role reporting to a CIO at an EAM / MFO / boutique (see [`interview/firm_briefs.md`](interview/firm_briefs.md) for the canonical target-firm example, CW Asset Management). The role overlaps heavily with junior IC but diverges in three ways: (1) **no personal AUM, no book transfer, no business plan** — skip that material entirely; (2) **structured-product lifecycle literacy is load-bearing**, because an EAM's daily investment activity is often dominated by 1–3 structured-product houses (BNP, UBS, JB, sometimes CS-legacy); (3) **you report to the CIO** — the CIO's market view, process, and language become your second voice, so alignment-without-parroting is a specific interview axis.
+
+| Day | Focus | Shift from default path |
+|---|---|---|
+| D1 | [Derivatives](products/derivatives.md) — **full Greeks, payoff math, put-call parity, barriers** | As IC path; slightly deeper on **barriers and worst-of** mechanics because FCNs are the daily workload |
+| D2 | [Structured products](products/structured.md) — **FCN hero read + BEN + CDRAN + autocallable**; skip accumulator (rare at EAM suitability level) | **FCN is the primary product** — drill §3 lifecycle, sizing, and issuer-credit sub-sections until you can talk a client through an observation-date call |
+| D3 | [FI](products/fixed_income.md) (YTW + AT1 lessons), [FX](products/fx.md) light, [equities](products/equities_funds.md) light, [**issuers**](products/issuers.md) — full read; **skip `leverage.md`** (Lombard structuring is the custodian's job at an EAM, not yours) | Less breadth than default IC path; depth shifted toward FCN issuer fundamentals |
+| D4 | [WM concepts](concepts/wealth_management.md) — **SAA/TAA, suitability, mandate types**; [CIO house view](concepts/cio_house_view.md) — **full read**; 2 of the [cases](cases/) | Cases are read in product-combination framing ("which FCN / which non-FCN sleeve for each objective"), not relationship framing |
+| D5 | [Regulation](regulation/) — **AI/SIP + MAS 626 + PB Code + FATCA/CRS**, lighter on AML mechanics; [**account-opening KYC**](regulation/account_opening_kyc.md) — full read (the EAM onboarding process you will run in the first year); [**market view — write your own and rehearse out-loud**](market_view.md); [industry](industry.md) — **focus on the EAM landscape part**; [**CIO drill**](interview/cio_drill.md) — full read | Writing your own market view is the single highest-leverage rehearsal for the CIO screen |
+| D6 | [**Portfolio briefing** — concepts/client_lifecycle.md Phase 6 quarterly-review section](concepts/client_lifecycle.md); **"conviction trade today" drill** via [`interview/cio_drill.md`](interview/cio_drill.md); [**"Why Singapore" narrative**](interview/openers.md) | **Skip the business plan entirely.** Skip book-transfer BQ stories (01, 05, 06, 09). |
+| D7 | Q&A pass on weakest topic; polish the 3–5 stories that actually apply (see below) | No mock interview (per `CLAUDE.md`); Q&A knowledge-curation only |
+
+**Non-obvious PM-Assistant prep priorities:**
+
+1. **FCN lifecycle fluency.** The CIO will not ask "what is an FCN" — they will ask "the FCN we booked for Client X knocked in yesterday morning, what's your plan and what do you say on the call at 3pm." See `products/structured.md` §3 for the lifecycle-management sub-sections.
+2. **Issuer mental model.** Know the difference between a BNP-issued and a UBS-issued note — franchise strengths, credit profile, post-CS AT1 read-through to structured-note issuer credit. An EAM chooses issuers; a bank PB usually doesn't.
+3. **A written market view, read out loud.** Same as IC — but at an EAM the CIO is the senior decision-maker and will pressure-test your view more personally. Be ready for "what would change your mind" and "what's not priced in that should be."
+4. **"Why Singapore? / how long will you stay?"** For an international candidate (Taiwanese, HK, Chinese), this is a distinct interview axis beyond "why this firm." The CIO is hiring for multi-year commitment; you need a specific, defensible short- and long-term answer. See [`interview/openers.md`](interview/openers.md) §"Why Singapore."
+5. **Portfolio-briefing skill.** "跟客人做 portfolio 匯報" is listed as core job content. Know the structure of a quarterly review deck (PnL, attribution, risk exposures, changes, outlook, recommendations) and the tone — peer-to-peer with UHNW, not teacher-to-student.
+6. **Operational literacy.** At an EAM you are closer to custodian KYC, account opening, and multi-custody reporting (Addepar / Etops) than at a bank. Interviewers test whether you understand the operational weight of the job — typical SG custodian KYC is 3–6 months, SoW/SoF documentation is the RM/analyst's responsibility to compile, not the custodian's. See [`regulation/account_opening_kyc.md`](regulation/account_opening_kyc.md) for the full process, custodian-bank thresholds, and the common failure modes.
+
+**What explicitly NOT to prepare:**
+
+- **Book-transfer plan / AUM pitch.** You don't have a book. Claiming one at a junior level invites a bad question.
+- **`business_plan/template.md`.** RM-only.
+- **BQ stories 01 (relationship win), 05 (cross-sell), 06 (lost-client recovery), 09 (cold outreach).** These are book-generating stories; they don't map to your role.
+- **Full Lombard/leverage structuring.** Read the summary in [`products/leverage.md`](products/leverage.md) — you should understand the concept and know it sits at the custodian — but don't drill margin-call mechanics at the same depth as a bank RM would.
+
 ---
 
 ## BQ story emphasis by role
 
 Both roles need the full 10-story bank, but the *ordering* of preparation differs. Map to PB competencies:
 
-| Story (in [`bq/stories/`](bq/stories/)) | Competency | RM priority | IC priority |
-|---|---|---|---|
-| 01 Relationship win | Trust / commercial | 🔥🔥 | ◆ |
-| 02 AML red flag | Integrity | 🔥 | 🔥 |
-| 03 Market volatility client | Composure / judgement | 🔥🔥 | 🔥🔥 |
-| 04 Difficult client | Relationship / resilience | 🔥🔥 | 🔥 |
-| 05 Cross-sell success | Commercial | 🔥🔥 | ◆ |
-| 06 Lost-client recovery | Commercial / resilience | 🔥🔥 | · |
-| 07 Product-specialist conflict | Judgement / collaboration | 🔥 | 🔥🔥 |
-| 08 Missed target / learning | Resilience / commercial | 🔥🔥 | ◆ |
-| 09 Cold outreach win | Commercial / initiative | 🔥🔥 | · |
-| 10 Regulatory adaptation | Judgement / compliance | 🔥 | 🔥 |
+| Story (in [`bq/stories/`](bq/stories/)) | Competency | RM priority | IC priority | PM-Assistant priority |
+|---|---|---|---|---|
+| 01 Relationship win | Trust / commercial | 🔥🔥 | ◆ | · |
+| 02 AML red flag | Integrity | 🔥 | 🔥 | 🔥 |
+| 03 Market volatility client | Composure / judgement | 🔥🔥 | 🔥🔥 | 🔥🔥 |
+| 04 Difficult client | Relationship / resilience | 🔥🔥 | 🔥 | ◆ |
+| 05 Cross-sell success | Commercial | 🔥🔥 | ◆ | · |
+| 06 Lost-client recovery | Commercial / resilience | 🔥🔥 | · | · |
+| 07 Product-specialist conflict | Judgement / collaboration | 🔥 | 🔥🔥 | 🔥🔥 |
+| 08 Missed target / learning | Resilience / commercial | 🔥🔥 | ◆ | ◆ |
+| 09 Cold outreach win | Commercial / initiative | 🔥🔥 | · | · |
+| 10 Regulatory adaptation | Judgement / compliance | 🔥 | 🔥 | 🔥 |
 
-If you have limited prep time, the RM's top-5 are **{01, 03, 04, 05, 06, 08, 09}** (pick 5 strongest) and the IC's top-5 are **{03, 07, 02, 10, 04}** — note the IC set has zero "won new AUM" stories and weighs specialist-collaboration stories heavily.
+If you have limited prep time, the RM's top-5 are **{01, 03, 04, 05, 06, 08, 09}** (pick 5 strongest); the IC's top-5 are **{03, 07, 02, 10, 04}** — zero "won new AUM" stories, specialist-collaboration weighted; the **PM-Assistant's top-5 are {03, 07, 02, 10, 08}** — same shape as IC but story 07 is interpreted as "how you work with the PM and CIO" rather than the RM-vs-specialist axis.
 
 ---
 
@@ -144,7 +175,7 @@ If you have limited prep time, the RM's top-5 are **{01, 03, 04, 05, 06, 08, 09}
 
 ## How this repo handles the distinction
 
-The repo is **not forked into rm/ and ic/ trees** — that would duplicate ~70% of content and invite drift. Instead:
+The repo is **not forked into rm/, ic/, or pm-assistant/ trees** — that would duplicate ~70% of content and invite drift. Instead:
 
 - **Product pages** are written at IC-depth (payoff math, Greeks intuition, numeric examples) *with* RM-relevant framing (client scenarios, conversation openers, suitability traps). An RM candidate can read the "When to recommend" and "Interview questions" sections and skim the mechanics depth; an IC candidate reads everything.
 - **Case studies** ([`cases/`](cases/)) are written in the IC-framing style (SAA / TAA / product-selection reasoning) but include a "client narration" layer for RM prep.
@@ -159,6 +190,8 @@ The repo is **not forked into rm/ and ic/ trees** — that would duplicate ~70% 
 **If you are preparing for an RM / Senior RM / Director-level lateral:** spend 60% of study time on commercial / BQ / business plan, 30% on product breadth, 10% on regulation. Drill the business plan until every number is defensible.
 
 **If you are preparing for an IC / Investment Advisor role:** spend 60% on product / portfolio / market, 25% on BQ (focused on specialist / judgement stories), 10% on regulation, 5% on the commercial side (only enough to show you understand how your work connects to revenue).
+
+**If you are preparing for a PM-Assistant / EAM-Junior role:** spend 50% on structured-product lifecycle depth (FCN hero + BEN + CDRAN + autocallable + issuer credit) and portfolio construction, 20% on market view + CIO alignment rehearsal, 15% on BQ (stories 03, 07, 02, 10, 08), 10% on regulation (AI / SIP / PB Code — understand it, not drill it), 5% on the **"Why Singapore + career roadmap"** narrative. Skip business plan. Skip Lombard-structuring depth.
 
 **If you are preparing for both:** the IC side takes longer to prep, so if splitting time under a 1-week constraint, frontload IC study (Days 1–5) and use Days 6–7 for RM-specific commercial + BQ + business plan work.
 

@@ -4,7 +4,7 @@
 
 ## 直覺理解
 
-面試的前 5 分鐘決定後 55 分鐘被怎麼聽。**自我介紹 (self-intro)** 是第一印象的畫框；**"Why PB / Why this bank / Why you" 三問**是雇主判斷「這個人有沒有搞清楚自己要什麼」的測試。內容要誠實、具體、有 PB 味道——不是泛泛的「我很努力」（那是 HR screen 在聽的），而是「我在上一份工作裡遇過什麼客戶情境、當時怎麼處理、那個經驗讓我想轉 PB 的什麼角色」。最後「你有問題要問我嗎？」不是 polite closer，而是最後一道題，答不出會 -20 分。
+面試的前 5 分鐘決定後 55 分鐘被怎麼聽。**自我介紹 (self-intro)** 是第一印象的畫框；**"Why PB / Why this bank / Why you" 三問**是雇主判斷「這個人有沒有搞清楚自己要什麼」的測試。對於從台灣 / 香港 / 中國轉到新加坡的候選人，還多了一道**"Why Singapore / How long will you stay"**——這題答不好會被歸類成「用 SG 當跳板」，培訓 ROI 算不過來直接淘汰。內容要誠實、具體、有 PB 味道——不是泛泛的「我很努力」（那是 HR screen 在聽的），而是「我在上一份工作裡遇過什麼客戶情境、當時怎麼處理、那個經驗讓我想轉 PB 的什麼角色」。最後「你有問題要問我嗎？」不是 polite closer，而是最後一道題，答不出會 -20 分。
 
 ---
 
@@ -178,7 +178,72 @@ Pick **three** specific things. Mix platform + positioning + personal fit:
 
 ---
 
-## 4. "Why you?" / "Why should we hire you?"
+## 4. "Why Singapore?" / "How long will you stay?" — for international candidates
+
+**Who this section is for.** Candidates relocating to SG from Taiwan, Hong Kong, mainland China, Malaysia, Indonesia, or further afield. If you are a SG citizen or PR, skim this — it will still come up, but the burden of proof is lower.
+
+**What's actually being tested:**
+- **Commitment.** PB hire-to-productivity is 12–24 months. A firm spending training and platform on you needs to believe you will be there in year 3+. "3 years then back home" is an interview-killer; be honest but structured.
+- **Market literacy.** Do you understand *why* SG is the booking-centre story of the decade (MAS 13O/13U, VCC, post-HK FO migration, regulatory quality), or is "SG is a nice place to live" the extent of your thinking?
+- **Logistics reality.** Visa status (EP / S-pass / PR / citizen), family circumstances, cost-of-living readiness — the CIO will want to confirm you've thought past the first six months.
+- **Cultural adaptability.** Taiwan is mono-ethnic Mandarin; SG is multi-ethnic English-primary with Chinese / Indian / Malay / Eurasian communities plus a mainland China / HK / Indo / TW / European expat layer. Can you read the room?
+
+### Weak answers the interviewer has heard 1,000 times
+
+- **"Singapore is a great place to live / food / safe / clean."** Lifestyle answers signal you haven't thought about the work.
+- **"Singapore is the safe haven for Asian wealth."** True but generic. Every candidate says it.
+- **"I've always wanted to work in Singapore."** Hard to verify; sounds vague without a specific decision-moment.
+- **"3–5 years and I'll see."** Kills the interview. Firms are hiring for 5–10 years.
+
+### The four-pillar strong answer
+
+| Pillar | What to say | Why it works |
+|---|---|---|
+| **Market structure** | SG is where Asian UHNW is consolidating — MAS 13O/13U regime, VCC framework, post-HK migration, regulatory quality. The work I want to do is increasingly booked here. | Shows you know the industry trend, not just the city |
+| **Career density** | SG has Asia's deepest bench of senior PB talent (every major bank, every Swiss independent, serious EAM layer). For a candidate at my stage, 5–10 years in that concentration is compounding I can't get in Taipei / KL / Jakarta. | Frames SG as a career investment, not a lifestyle choice |
+| **Fit** | My Mandarin + English working profile and Greater-China cultural background matches the client segment the target firm serves. | Turns your international origin into an asset, not a liability |
+| **Commitment** | I've done the logistics research, I've rejected specific alternatives in my home market, and I'm here for a 5–10 year horizon — not a rotation. Be specific about visa / family. | Directly addresses the retention-risk question interviewers are silently running |
+
+### Template answer (personalise; do NOT read verbatim)
+
+> "I chose Singapore for three reasons and I'm committing to a 5-to-10-year horizon here, not a 2-to-3-year rotation. **First, the market structure.** Asian UHNW wealth has been consolidating in SG since 2019–2020 — HK's political shift, the 13O/13U regime, the VCC framework, MAS regulatory quality. The work I want to do — helping Greater China UHNW families structure cross-border wealth — is increasingly booked in SG, and that trend isn't reversing. **Second, the learning density.** SG has the deepest concentration of senior PB talent in Asia — every major bank, every Swiss independent, a serious EAM layer. For a candidate at my stage, being in that room for 5–10 years is compounding I cannot get in Taipei. **Third, the fit.** My Mandarin-and-English working profile plus my Greater-China cultural background matches `[target firm]`'s client segment specifically; I'm not arriving in SG hoping to build Greater-China exposure — I come with it. On commitment: I've done the logistics — `[visa status / EP track / family support]` — and I've turned down `[X specific alternative in TW / HK]` because this is a multi-year decision not a rotation."
+
+### "How long will you stay?" — the follow-up drill
+
+This is often a second-round question after the CIO has already formed a good-enough impression. The honest answer is the winning answer:
+
+- **Right:** "5 to 10 years minimum, with my current plan being to build a full career here. My family situation supports it; my visa path is clear; my career math works here in a way it doesn't elsewhere."
+- **Wrong:** "Forever" (implausible, sounds desperate). "3–5 years" (too short, telegraphs you're using SG as a pit-stop). Vague non-commitment ("we'll see how it goes") — screams retention risk.
+- **If family circumstances genuinely could pull you back:** say so, briefly and framed forward. "My parents are in Taiwan; I visit quarterly; I don't foresee a move back unless a specific health event, and I would flag that long before it became a retention issue for the firm." Honesty about constraints beats over-promising.
+
+### Taiwanese-candidate-specific context
+
+- **TW's US$5M annual outward-remittance quota** (CBC rule) is why TW UHNW offshore wealth flows into SG (and historically HK, now increasingly SG post-2020). Knowing this signals market literacy.
+- **TW estate tax (20% on worldwide estates for TW-domiciled individuals)** drives TW UHNW to use SG booking centres + offshore structures for succession. If you know the drivers, the firm's Greater-China orientation matches yours.
+- **Overseas-income minimum tax (海外所得最低稅負)** for TW residents is a specific constraint TW clients ask about; being able to say "this is on my radar and I'd flag it on the client conversation, not dodge it" is credibility-generating.
+- **Cultural-overlap-with-caveats:** SG and TW Chinese communities share roots, but SG's multi-ethnic English-first workplace is different from TW's Mandarin monoculture. Show you've thought about the adjustment — SG colleagues expect working English in meetings, not Mandarin-default.
+
+### FAQ of follow-ups to prepare
+
+| Question | Short-form answer |
+|---|---|
+| **Why not HK?** | Post-2020 political shift, regulatory uncertainty, FO outflows into SG. For a multi-year commitment at this career stage, SG's trajectory is the one I'm backing. |
+| **Why not London?** | Time zone and distance from Asian UHNW clients; tax drag on your income; the growth of wealth in the next decade is Asia, not Europe. |
+| **Why not stay in Taipei?** | Market is structurally small (CBC outflow quota means UHNW wealth is offshore); PB career density is 10–20× larger in SG; the clients I want to serve don't book in TW. |
+| **Why not Shanghai?** | Capital-account, political, and regulatory uncertainty make it the wrong base for a career serving Greater-China private wealth. |
+| **Will you miss home?** | Yes — and I've planned for it (family visits, network via video). This is not news to me; I've already done the cost-benefit and SG wins. |
+| **Can you handle SG cost of living?** | Yes — planned accommodation at `[X level]`, salary range supports it, I've done the math. |
+| **What's your visa status?** | Be ready to state: EP-eligible candidate / current pass holder / PR track / citizen. Employer cares about renewability and timeline. |
+
+### Traps to avoid
+
+- **Bashing Taiwan / HK / home market.** "The market there is too small for my ambitions" is OK; "I'm escaping Taiwan" is not. Interviewers respect ambition; they distrust people who talk badly about where they came from.
+- **Over-claiming SG knowledge.** If you haven't lived here, don't pretend you have. Say: "I've visited N times, spent Y weeks in the last year, read the MAS guidelines, spoken to `[specific people]`. That's my depth so far — I know I'll be building daily from Day 1."
+- **Ducking the retention question.** If you have a real time-horizon constraint (spouse's contract, parental health), naming it honestly and framing your work around it earns more trust than a generic "I'm here long-term."
+
+---
+
+## 5. "Why you?" / "Why should we hire you?"
 
 **What's being tested:** do you understand what the job actually requires, and can you credibly match yourself to it.
 
@@ -210,7 +275,7 @@ The "why you" for a lateral RM is substantially about *what you can bring in AUM
 
 ---
 
-## 5. "Why are you leaving your current firm?"
+## 6. "Why are you leaving your current firm?"
 
 **What's being tested:** do you handle the conversation with dignity, without bashing the prior firm.
 
@@ -246,7 +311,7 @@ Avoid sounding like a job-hopper; interviewer needs to believe the new role woul
 
 ---
 
-## 6. "Do you have any questions for us?" — the closing question
+## 7. "Do you have any questions for us?" — the closing question
 
 **Non-negotiable: have 5–7 good questions prepared.** Answering "no, I think you've covered everything" is the single biggest unforced error in the closing minutes. This is where the interviewer assesses: (a) are you curious, (b) have you thought about the role, (c) are you interviewing them too — i.e. are you discerning, or desperate.
 

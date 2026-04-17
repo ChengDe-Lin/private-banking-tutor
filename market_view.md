@@ -218,5 +218,6 @@ Carry trades that worked through 2022–2024 (borrow JPY, park USD/EM) are **les
 
 - [`concepts/cio_house_view.md`](concepts/cio_house_view.md) — how to use the CIO house view in client conversations.
 - [`concepts/wealth_management.md`](concepts/wealth_management.md) — how tactical views map to SAA / TAA adjustments.
+- [`interview/cio_drill.md`](interview/cio_drill.md) — the CIO-screen preparation architecture; "conviction trade today," second-level thinking, "what would change your mind," "what can AI not do." PM-Assistant / EAM-Junior candidates should treat this as the companion drill to rewriting this page.
 - [`.claude/commands/market.md`](.claude/commands/market.md) — `/project:market` slash command to refresh this page interactively.
-- [`roles.md`](roles.md) — IC candidates should be able to discuss this in depth; RM candidates use it to reference their target firm's house view.
+- [`roles.md`](roles.md) — IC and PM-Assistant candidates should be able to discuss this in depth; RM candidates use it to reference their target firm's house view.
