@@ -1,12 +1,14 @@
 # Private Banking Tutor
 
-A personal knowledge base for Singapore private-banking interviews (RM-lateral / Investment Counselor). AI-assisted curation with a 7-day study path, product deep-dives, suitability case studies, a behavioral story bank, and a business-plan template.
+A personal knowledge base for Singapore private-banking interviews. Primary focus: **PM-Assistant / EAM-Junior roles** (Assistant to Portfolio Manager at an External Asset Manager, reporting to CIO — specifically CW Asset Management as the target firm). Also covers bank-side RM and Investment Counselor interviews as secondary tracks. AI-assisted curation with a 7-day study path, product deep-dives (FCN-centric), issuer-selection discipline, suitability case studies, a behavioural story bank, verified firm briefs, and a filled-in sample-answers reference.
 
 **Live site:** <https://chengde-lin.github.io/private-banking-tutor/>
 
 ## Quick Start
 
-Start with **[`roles.md`](roles.md)** to decide which role (RM vs Investment Counselor) you're optimising for — the two interviews emphasise different things. Then **[`study_path.md`](study_path.md)** for the 7-day on-ramp.
+**If you are the candidate preparing for the interview:** open **[`START_HERE.md`](START_HERE.md)** — it's a 7-day plan that walks you through the repo in priority order with specific drills per day.
+
+**For a quick orientation otherwise:** start with **[`roles.md`](roles.md)** to pick your track (RM / IC / PM-Assistant), then **[`study_path.md`](study_path.md)** for the reading schedule.
 
 ```bash
 # Browse content as a website
