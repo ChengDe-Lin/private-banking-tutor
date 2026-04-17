@@ -15,6 +15,64 @@
 
 ---
 
+## How to use Claude Code for daily drill practice
+
+This repo is designed to work **two ways in parallel**:
+
+1. **Reading** — content lives on the live site (your friend will send the URL). Read the current day's assigned reading there.
+2. **Drilling** — open this local folder in **Claude Code**. Claude becomes your tutor: asks you questions, corrects mistakes, tracks what you're shaky on in `assessments/confusion_ledger.md`, and progressively builds `CHEAT_SHEET.md` as you lock things down.
+
+### First-ever session (do this once)
+
+After installing Claude Code and opening this folder (see `INSTALL_FOR_JIAJIA.md`), start with:
+
+> "Hi Claude — I'm JiaJia, day 1 of my CW prep. Please read START_HERE.md and CLAUDE.md first, then drill me on today's topic. Don't lecture — quiz me and correct what I get wrong."
+
+Claude will read the CLAUDE.md setup (which knows your context) and the confusion ledger (empty on day 1), then start drilling.
+
+### Typical daily session (30–60 min, 5–10 days in a row)
+
+1. **Open session:** "Claude, it's day N — what was I shaky on last time that we should re-test?"  
+   (Claude reads `assessments/confusion_ledger.md` and proposes 1–2 re-tests from open items.)
+2. **New-material drill:** "Today's topic is `[today's focus from the 7-day plan]`. Quiz me on it."  
+   Claude asks structured questions; you answer; Claude corrects and **logs anything you get wrong** to the confusion ledger.
+3. **Close session:** "Give me the daily handoff block to send to my friend."  
+   Claude prints a ~150-word summary — copy that and send it to your friend via WeChat / LINE / WhatsApp.
+
+### Sample prompts by use case
+
+| You want to... | Say to Claude |
+|---|---|
+| Drill FCN mechanics | "Drill me on FCN — explain what happens in each of the three paths. Correct anything I miss." |
+| Rehearse an opener | "Quiz me on the 'Why Singapore' question. When I answer, mark every generic sentence and tell me to make it more specific." |
+| Pressure-test your market view | "I'm going to walk through my market view for 4 minutes. After each paragraph, interrupt me if the view is consensus or if I've hedged. Make me commit to numbers." |
+| Understand a confusing concept | "I don't get the post-CS AT1 lesson as it applies to structured notes. Ask me what I think I know, then fill the gaps, and log the gaps to the confusion ledger." |
+| Build the cheat sheet | "We've tested issuer-selection twice now. Can you distil it into the cheat-sheet format in CHEAT_SHEET.md §4?" |
+| Review what's stuck | "Show me all `open` items in the confusion ledger and suggest which to prioritise for today." |
+
+**Rule:** never ask Claude to "do a full mock interview." This repo's CLAUDE.md explicitly disables that (per JiaJia's preference). Drill individual questions, not 45-minute role-plays.
+
+### Daily handoff ritual
+
+At the end of every session, Claude prints a pre-formatted summary block. Your entire job is **copy → paste → send**. The format is already there; don't try to rewrite it.
+
+```
+📋 CW Prep — Day [N], [date]
+Covered today: ...
+New confusion entries: ...
+Resolved this session: ...
+Cheat sheet updates: ...
+Gaps in the repo I noticed: ...
+Next session suggested focus: ...
+```
+
+Your friend takes these daily messages to:
+- Update the website if there are content gaps you surfaced.
+- See what you're getting right and wrong.
+- Adjust what tomorrow's drill should cover.
+
+---
+
 ## The big picture — what the role actually is
 
 You are interviewing to be an **Assistant to the Portfolio Manager** at a ~5-year-old SG Multi-Family Office / External Asset Manager. You will:
@@ -220,10 +278,15 @@ These are personal and cannot be outsourced:
 
 ## Key file index
 
-**Start with these three every time you open the repo:**
+**Start with these four every time you open the repo:**
+- [`INSTALL_FOR_JIAJIA.md`](INSTALL_FOR_JIAJIA.md) — one-time setup: how to open this folder with Claude Code, the daily handoff ritual, FAQ for non-technical use.
 - [`roles.md`](roles.md) — role calibration (PM-Assistant track).
 - [`START_HERE.md`](START_HERE.md) — this file; the 7-day plan.
 - [`study_path.md`](study_path.md) — the reading schedule.
+
+**The living artefacts Claude maintains for you:**
+- [`assessments/confusion_ledger.md`](assessments/confusion_ledger.md) — what you got wrong, automatically logged by Claude.
+- [`CHEAT_SHEET.md`](CHEAT_SHEET.md) — the one-pager Claude builds progressively as you lock down material.
 
 **Interview-critical content, by topic:**
 - [`products/structured.md`](products/structured.md) — FCN, BEN, CDRAN, autocallable mechanics + lifecycle.

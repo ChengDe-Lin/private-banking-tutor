@@ -1,45 +1,50 @@
-# Confusion Ledger
+# Confusion Ledger — JiaJia's CW Asset Management Interview Prep
 
-> **Purpose.** A running record of things I got wrong, almost got wrong, or couldn't fully explain while studying this material. Blind spots don't go away by avoidance — they go away by naming them and drilling the fix. Revisit before Day 7 and before the interview.
+> **How this file works.** Claude automatically appends an entry here whenever JiaJia struggles with a concept, gets a fact wrong, or asks the same question twice during a drill session. Each entry has: date, topic, what she said vs what's correct, and a status (`open` / `resolved`). At the start of every session, Claude re-reads this file and offers to re-test anything still marked `open`.
 >
-> **How to use.** When you stumble while reading a page, studying a concept, or attempting a mock answer — log it here. Invoke `/project:confusion` to add a new row via the tutor. After resolving, mark Status: resolved and capture the *correct* explanation so next-time-you can find it fast.
+> **For JiaJia:** you don't need to edit this file — Claude maintains it. Your job is to pay attention when Claude flags a confusion, ask follow-ups until you actually get it, and trust that Claude will re-test you on it next session.
+>
+> **Format for Claude (follow exactly):** append new entries to the "Ledger" section below in table format. When resolving an item, change Status to `resolved` and add one sentence to the Resolution column about what finally clicked. Never edit historical What-I-got-wrong entries — they are the training signal.
+
+---
+
+## Session log
+
+At the start of every session, Claude adds a one-line marker here with the date and primary topic:
+
+| Session | Date | Primary focus | Duration (approx) |
+|---|---|---|---|
+| 1 | _to fill_ | _to fill_ | _to fill_ |
+
+---
 
 ## Ledger
 
-| Date | Topic | What I got wrong | Correct explanation | Status |
-|---|---|---|---|---|
-| 2026-04-17 | YTC vs YTW on callable perp | Confused which one is the issuer-friendly number and which one is the conservative investor quote | YTW (yield-to-worst) is the conservative investor quote — min of YTM and all YTCs. Issuer will only call when it's bad for you (rates fell), so YTC is often *lower* than YTM. Always quote YTW to a client on callable paper. | resolved |
-| 2026-04-17 | DCI is "short a put on alt currency" | Kept inverting which currency the put is on | Client deposits USD, agrees to be converted to SGD at strike if USDSGD drops below it at expiry. Economically: short a USDSGD put. If SGD strengthens (USDSGD drops), client is converted to SGD (the "alt" from the USD-base perspective) at a worse rate than market. The "alt" is the currency you end up receiving. | resolved |
-| | Example: vega on the RM-sold DCI to the client | | | |
-| | | | | |
-| | | | | |
+| # | Date | Topic | What JiaJia got wrong / couldn't explain | Correct explanation | Status | Resolution (what clicked) |
+|---|---|---|---|---|---|---|
+| _example_ | 2026-04-18 | Short-put direction in DCI | Said "client is long a put on the alt currency" | Client is SHORT a put on the alt currency / SHORT a call on the base currency — she collects premium as the enhanced coupon. Direction memory trick: the one getting paid coupon is the one writing the option. | open | _to fill on resolution_ |
 
 ---
 
-**Template row to copy when adding:**
+## Patterns to watch
 
-`| YYYY-MM-DD | <topic — specific, not "options" but "ITM vs ATM put on a bearish view"> | <what you got wrong, specifically> | <correct explanation, in your own words> | open / resolved |`
+Claude: as entries accumulate, flag clusters. Common areas where PM-Assistant-track candidates trip:
 
----
+- **Option direction / sign** — who's short, who's long, which way payoff tilts. If 2+ entries cluster here, re-read `products/derivatives.md` with JiaJia.
+- **Worst-of mechanics** — how the basket concentrates on the weakest name. If entries cluster here, drill `products/structured.md` §4 autocallable.
+- **FCN lifecycle** — observation-date decisions, KI response, autocall reinvestment. If entries cluster, drill `products/structured.md` §3 sub-sections (a)–(f).
+- **Issuer credit logic** — why cheaper isn't always better. If entries cluster, re-read `products/issuers.md`.
+- **Regulatory scope** — which rule covers what, AI vs EI, FATCA vs CRS.
+- **Suitability nuance** — capacity vs willingness, stated vs practical risk tolerance.
+- **Numbers freezing** — JiaJia can explain concepts verbally but goes blank when asked for concrete percentages (SAA, position sizing, coupon-vs-vol ratios). If this pattern appears, schedule a "numbers-only" drill session.
 
-## Patterns to watch for
-
-As you accumulate entries, look for patterns. Common areas of confusion that tend to cluster:
-
-- **Option direction / sign** — which side is the client on; which way the payoff tilts.
-- **Rate mechanics** — forward points vs. forecasts; YTM vs YTW; duration vs convexity.
-- **Product embedding** — structured-product decomposition into deposit + option; which side of the option the client is on.
-- **Regulatory scope** — what waves what; what applies to whom (FATCA vs CRS, AI vs EI).
-- **Suitability nuance** — capacity vs willingness; stated vs practical risk tolerance.
-- **Cross-border** — tax residency vs citizenship; sending country vs receiving country rules.
-
-If three or more entries cluster in one area, spend 30 minutes re-reading the relevant page and the related material; the confusion is structural, not incidental.
+**Threshold rule:** if 3+ entries sit in one cluster and remain `open` for 2+ sessions, tell JiaJia explicitly "this is a structural gap, not an incidental one — let's spend a dedicated 30 minutes on it" rather than hoping it resolves incidentally.
 
 ---
 
 ## Related
 
-- [`/project:confusion`](../.claude/commands/confusion.md) — slash command that appends entries interactively.
-- [`../products/`](../products/) — primary source material to re-read when a confusion entry sits in a product area.
-- [`../regulation/`](../regulation/) — re-read when confusion entries cluster in regulatory topics.
-- [`../concepts/wealth_management.md`](../concepts/wealth_management.md) — the suitability framework that many confusion entries relate back to.
+- [`../CLAUDE.md`](../CLAUDE.md) — the tutoring protocol that drives this file.
+- [`../CHEAT_SHEET.md`](../CHEAT_SHEET.md) — the companion artefact where *resolved* items get distilled into one-line recall prompts for pre-interview review.
+- [`../products/`](../products/) — primary material when a confusion sits in a product area.
+- [`../regulation/`](../regulation/) — re-read when confusion clusters in regulatory topics.

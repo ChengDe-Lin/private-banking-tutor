@@ -6,7 +6,7 @@ A personal knowledge base for Singapore private-banking interviews. Primary focu
 
 ## Quick Start
 
-**If you are the candidate preparing for the interview:** open **[`START_HERE.md`](START_HERE.md)** — it's a 7-day plan that walks you through the repo in priority order with specific drills per day.
+**If you are the candidate preparing for the interview:** open **[`INSTALL_FOR_JIAJIA.md`](INSTALL_FOR_JIAJIA.md)** first (how to set up Claude Code with this repo), then **[`START_HERE.md`](START_HERE.md)** — a 7-day plan that walks you through the repo in priority order with specific drills per day.
 
 **For a quick orientation otherwise:** start with **[`roles.md`](roles.md)** to pick your track (RM / IC / PM-Assistant), then **[`study_path.md`](study_path.md)** for the reading schedule.
 
