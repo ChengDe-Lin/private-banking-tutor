@@ -1,0 +1,16 @@
+# Node
+node_modules/
+dist/
+.vite/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Private preparation materials
+company_research/
+mock_sessions/
+assessments/drafts/
