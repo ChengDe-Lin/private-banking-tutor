@@ -6,6 +6,8 @@
 
 結構型商品 = **存款 / 零息債券 + 選擇權** (option) 的組合包裝。所謂「增強收益 (enhanced yield)」，本質上是**客戶把波動率賣給銀行**，收到的權利金 (premium) 包裝成誘人的 coupon。當市場照常運作，客戶拿到高於存款利率的配息；當市場走反方向 (下跌穿過 strike、敲入 (knock-in) 障礙觸發)，客戶就要吃下自己賣掉的那個部位的尾端風險——通常是被迫以 strike 價買進已經大跌的標的，或被交割外幣而承擔匯損。一句話：**coupon 不是利息，是保費；你是保險公司，不是儲戶。**
 
+> 💡 **Bottom line for interviews:** Yield-enhancement structured notes (DCI, ELN, FCN, autocallable, accumulator) all make the client **net short optionality** — the high coupon is premium for warehousing tail risk, not interest for lending money.
+
 ---
 
 ## Mechanism

@@ -6,6 +6,8 @@
 
 Lombard（又稱 Securities-Backed Loan / SBL, 證券抵押貸款）的本質：客戶把已有的投資組合 (債券、股票、基金) 抵押給銀行，銀行按資產品質打折後借錢給客戶——通常是借**美元**，拿去再投資、買房、週轉、或做 carry。對銀行而言，這是低違約率、利差穩定的生意；對客戶而言，這是不用賣資產就能擴大資金動能的工具。**但風險不是利率，是 haircut (折扣率)**：市場下跌時，抵押品市值先跌，然後銀行可能同時收窄 LTV——這是「雙殺」，2008、2015 (港股 HSCEI)、2020 (疫情)、2022 (升息 + 股債雙殺) 都出現過。能不能活過這種 stress，才是 Lombard 決策的真正關鍵。
 
+> 💡 **Bottom line for interviews:** Lombard risk is the **haircut (LTV policy), not the rate** — in stress, assets fall AND LTVs narrow simultaneously (the double whammy). Stress-test with MTM down 25% + LTV narrowing 10 percentage points; coverage ≥ 1.3 through that stress is prudent sizing.
+
 ---
 
 ## Mechanism

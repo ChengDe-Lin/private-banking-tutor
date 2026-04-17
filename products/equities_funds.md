@@ -2,6 +2,8 @@
 
 > **Day 3 of the 7-day study path — light-depth reference page.** Cash equities, mutual funds, ETFs and REITs are table-stakes product knowledge; the interview won't spend long here but you will absolutely get asked "ETF or mutual fund — what do you recommend, and why?" and you must be able to speak to **fee conflicts, trailer fees / retrocessions, and the SG REIT regime** in particular.
 
+> 💡 **Bottom line for interviews:** Active mutual funds have to clear ~100+ bps of fee drag to match passive ETFs over 10 years — SPIVA data says fewer than 20% do. Active earns its keep in inefficient markets, specialist mandates, or drawdown-management; otherwise default to passive. S-REITs are equity-like with a 50% gearing cap and structural 90% distribution rule.
+
 ## Mechanism
 
 ### Cash equities

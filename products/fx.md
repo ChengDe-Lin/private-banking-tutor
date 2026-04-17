@@ -6,6 +6,8 @@
 
 外匯 (FX) 本質上就是兩種貨幣的相對價格。PB 客戶碰 FX 通常不是為了投機——是為了**把未來一筆已知或半已知的跨幣別現金流鎖定在今天可以接受的匯率**（小孩留學學費、海外房產尾款、家族跨境繼承、外幣收息 hedging）。Spot 是當下價格；forward 是用兩邊利率差 (interest-rate differential) 鎖定的未來價；NDF 是流動性受限貨幣 (如 CNY / KRW / TWD) 的現金結算版本。選擇權 (FX option) 則讓客戶在鎖價和保有彈性之間取捨。**forward 不是市場對未來匯率的預測，是 carry 算出來的**——這是第一句話客戶最容易誤解的。
 
+> 💡 **Bottom line for interviews:** Forward points = interest-rate differential (covered interest parity), **not** a market forecast of direction. NDFs exist for restricted currencies (CNY, KRW, TWD, INR) and settle against a fixing — not spot. Most PB FX work is hedging known liabilities, not speculation.
+
 ---
 
 ## Mechanism

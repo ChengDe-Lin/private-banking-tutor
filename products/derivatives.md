@@ -6,6 +6,8 @@
 
 選擇權 (option) 是**權利**不是義務——買方付權利金換未來成交的選擇。期貨與遠期 (futures / forwards) 則是雙方都必須履約的合約，用來**鎖定**未來價格。把這兩者排列組合，就是私人銀行所有結構型商品的文法。
 
+> 💡 **Bottom line for interviews:** Every structured product on the PB shelf is built from the four option primitives (long / short call, long / short put) plus bonds and cash. If you internalise short-put P&L, you've internalised half the yield-enhancement shelf.
+
 ---
 
 ## Mechanism

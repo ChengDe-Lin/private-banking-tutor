@@ -2,6 +2,8 @@
 
 > **Day 3 of the 7-day study path — light-depth reference.** Alternatives (HFs, PE, private debt, RE, infra) are how UHNW books earn the illiquidity premium and access manager alpha beyond public markets. On a PB interview you don't need fund-of-fund due-diligence depth, but you must be able to (a) distinguish the major strategy families in one sentence each, (b) speak to J-curve / commitment dynamics of PE, (c) explain why feeder-fund structures exist, and (d) honestly answer "should the client put 20% in PE?"
 
+> 💡 **Bottom line for interviews:** The illiquidity premium is only realised by investors who can genuinely hold through the full 7–10 year lock-up. PE manager dispersion is huge (top-quartile vs bottom ~1000 bps of IRR), so **manager selection matters more than in public markets**. Commitment ≠ invested capital — plan for the capital-call schedule.
+
 ## Mechanism
 
 ### The alternatives shelf — six families

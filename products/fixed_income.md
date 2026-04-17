@@ -6,6 +6,8 @@
 
 一張債券 = **未來一串固定現金流的打包票據**。你付現在的錢 (price)，換未來一系列的利息 (coupon) + 本金 (principal) 回流。同一組現金流可以用三種方式看價：殖利率 (yield) 倒推出折現率、信用利差 (credit spread) 看超出無風險利率多少、存續期 (duration) 看利率漲 1 個百分點價格會掉多少。**價格與殖利率反向移動** (interest rate 漲 → 舊券變不香 → 價格跌)，這是所有債券直覺的起點。
 
+> 💡 **Bottom line for interviews:** Price moves inversely to yield, and **duration** tells you how much. Always quote **YTW (yield-to-worst)** on callable paper, not YTM — the issuer only calls when it hurts you. Post-CS AT1, size single-name perps < 1% of portfolio and read the writedown trigger.
+
 ---
 
 ## Mechanism
